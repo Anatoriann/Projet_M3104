@@ -26,18 +26,18 @@
 				<p>Saisissez les informations relatives au nouveau match.</p>
 
 
-				<form action="matchs.php" method="post">
+				<form action="traitement.php" method="post">
 					<input name="equipe" type="text" placeholder="Nom de l'équipe adverse" required> <br />
 
 					<p>Date et heure du match</p>
 					 <input name="date" type="date" placeholder="JJ/MM/AAAA" required> 
 
-					<input name="time" type="time" required> <br />
+					<input name="time" type="time" placeholder = "--:--" required> <br />
 
 					<p> Lieu de rencontre </p>
-					<input type="radio" name="domicile" value=1 checked>
+					<input type="radio" name="lieu" value=1 checked>
  					 <label>Domicile</label>  <br />				
-	 				<input type="radio" name="extérieur" value=2> 
+	 				<input type="radio" name="lieu" value=2> 
 	 				 <label>Extérieur</label>  <br />
  					
 
