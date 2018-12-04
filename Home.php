@@ -15,7 +15,7 @@
 		<div class="content">
 
 			<div class="date"> 
-				<img src="icone/calendrier">
+				<img src="icone/calendrier.svg">
 				<p><?php 
 					$today = date("d.m.y"); 
 					echo "$today"; 
