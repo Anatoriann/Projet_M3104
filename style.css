@@ -136,7 +136,11 @@ a {
 }
 
 .formulaire input, .formulaire p {
-	margin-bottom: 2em;
+	margin-bottom: 1.5em;
+}
+
+.formulaire form p {
+	margin-bottom: 1em;
 }
 
 input[type=text] {
