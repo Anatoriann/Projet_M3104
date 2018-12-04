@@ -135,8 +135,8 @@ a {
 	top: 5em;
 }
 
-.formulaire input, .formulaire p {
-	margin-bottom: 1.5em;
+.formulaire input, .formulaire p,{
+	margin-bottom: 2em;
 }
 
 .formulaire form p {
@@ -145,11 +145,12 @@ a {
 
 input[type=text] {
 	font-family: 'Roboto', Helvetica;
-	width: 30%;
+	width: 15%;
 	margin: 0;
-    padding: 12px 20px;
-    box-sizing: border-box;
+    	padding: 12px 20px;
+   	box-sizing: border-box;
 }
+
 
 input[type=submit] {
 	font-family: 'Roboto', Helvetica;
@@ -160,12 +161,46 @@ input[type=submit] {
     color: white;
     padding: 16px 40px;
     text-decoration: none;
-    margin: 4px 2px;
+    margin: 1em 2px;
     cursor: pointer;
 }
+
+input[type=date] {
+	font-family: 'Roboto', Helvetica;
+	width: 7.5%;
+	margin: 0;
+    	padding: 0 0.5em;
+   	box-sizing: border-box;
+}
+
+input[type=time] {
+	font-family: 'Roboto', Helvetica;
+	width: 3%;
+	margin: 0;
+    	padding: 0 ;
+   	box-sizing: border-box;
+}
+
 
 input[type=submit]:hover {
 	transition: 0.6s;
 	background-color: white;
 	color: #4CAF50;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+	-webkit-appearance : textfield;
+	-moz-appearance : textfield;
+	
+}
+
+input[type=number] {	
+	appearance : none;
+	box-sizing : border-box;
+	width : 4%;
+	padding : 0.5em;
+
+}
+
+

@@ -27,12 +27,12 @@
 
 
 				<form action="traitement.php" method="post">
-					<input name="equipe" type="text" placeholder="Nom de l'équipe adverse" required> <br />
+					<input name="equipe" type="text" placeholder="Nom de l'équipe adverse" required>  <br />
 
 					<p>Date et heure du match</p>
 					 <input name="date" type="date" placeholder="JJ/MM/AAAA" required> 
 
-					<input name="time" type="time" placeholder = "--:--" required> <br />
+					<input name="time" type="time" placeholder = "--:--" required class="heure"> <br />
 
 					<p> Lieu de rencontre </p>
 					<input type="radio" name="lieu" value=1 checked>

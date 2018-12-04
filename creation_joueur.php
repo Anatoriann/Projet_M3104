@@ -27,11 +27,14 @@
 
 
 				<form action="traitement.php" method="post">
-					<input name="num_licence" type="text" placeholder="Numéro de licence" required> <br />
+					
+					<div class="info-joueur">
+						<input name="num_licence" type="text" placeholder="Numéro de licence" required> <br />
 
-					<input name="nom" type="text" placeholder="Nom" required> <br />
+						<input name="nom" type="text" placeholder="Nom" required> <br />
 
-					<input name="prenom" type="text" placeholder="Prénom" required> <br />
+						<input name="prenom" type="text" placeholder="Prénom" required> <br />
+					</div>
  					
 					<p>Date et heure du match</p>
 					 <input name="date" type="date" placeholder="JJ/MM/AAAA" required>  <br />
