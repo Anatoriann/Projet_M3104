@@ -16,7 +16,7 @@
 			
 
 			<div class="affichage_joueurs">
-				<a href=creation_joueur.php" class="bouton_creation"> Nouveau joueur</a>
+				<a href="creation_joueur.php" class="bouton_creation"> Nouveau joueur</a>
 			</div>
 	</div>
 
