@@ -9,18 +9,11 @@
 <body>
 
 	<?php 
-		include('menu.html');
+		require('menu.php');
 	?>
 
 	<div class="content">
 			
-			<div class="date"> 
-				<img src="icone/calendrier.svg">
-				<p><?php
-					 $today = date("d.m.y"); 
-					echo "$today"; 
-				?></p>
-			</div>
 
 			<div class="formulaire">
 				<p>Saisissez les informations relatives au nouveau match.</p>
@@ -40,8 +33,8 @@
 	 				<input type="radio" name="lieu" value=2> 
 	 				 <label>Extérieur</label>  <br />
  					
-
-					<input type="submit" value="Valider">
+					<a href="matchs.php" class="bouton_retour">&laquo; Retour</a>
+					<input type="submit" value="Valider &raquo;">
 				</form>
 
 			</div>

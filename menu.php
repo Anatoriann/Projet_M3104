@@ -8,3 +8,11 @@
 				<a href="statistiques.php">Statistiques des joueurs</a>
 				</div>
 			</nav>
+
+			<div class="date"> 
+				<img src="icone/calendrier.svg">
+				<p><?php
+					 $today = date("d.m.y"); 
+					echo "$today"; 
+				?></p>
+			</div>
