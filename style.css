@@ -227,5 +227,16 @@ input[type=number] {
 .bouton_retour:hover {
     background-color: #ddd;
     color: black;
+    transition : 0.2s;
 }
+
+/* -------------------------------------------- 
+				PAGES DE TRAITEMENT
+----------------------------------------------- */
+
+.message_etat {
+	margin-left : 1em;	
+	margin-top : 11%;
+}
+
 

@@ -8,19 +8,11 @@
 
 <body>
 		<?php 
-		require('menu.html');
+		require('menu.php');
 		 ?>
 
 		
 		<div class="content">
-
-			<div class="date"> 
-				<img src="icone/calendrier">
-				<p><?php 
-					$today = date("d.m.y"); 
-					echo "$today"; 
-				?></p>
-			</div>
 
 
 			<div class="match-prevu">

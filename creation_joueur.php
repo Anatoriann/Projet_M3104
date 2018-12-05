@@ -9,18 +9,11 @@
 <body>
 
 	<?php 
-		require('menu.html');
+		require('menu.php');
 	?>
 
 	<div class="content">
 			
-			<div class="date"> 
-				<img src="icone/calendrier.svg">
-				<p><?php
-					 $today = date("d.m.y"); 
-					echo "$today"; 
-				?></p>
-			</div>
 
 			<div class="formulaire">
 				<p>Saisissez les informations relatives au nouveau joueur.</p>
