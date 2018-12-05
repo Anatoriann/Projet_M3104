@@ -16,6 +16,8 @@
 			
 		<div class="affichage_matchs">
 		<p> Matchs à venir </p>	
+
+		<a href=creation_match.php" class="bouton_creation"> Nouveau match </a>
 		</div>
 		
 	</div>
