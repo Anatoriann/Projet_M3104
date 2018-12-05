@@ -9,7 +9,7 @@
 <body>
 
 	<?php 
-		include('menu.html');
+		require('menu.html');
 	?>
 
 	<div class="content">
@@ -29,7 +29,8 @@
 				<form action="traitement.php" method="post">
 					
 					<div class="info-joueur">
-						<input name="num_licence" type="text" placeholder="Numéro de licence" required> <br />
+			
+						<div class="licence"> <input name="num_licence" type="text" placeholder="Numéro de licence" required > <br /> </div>
 
 						<input name="nom" type="text" placeholder="Nom" required> <br />
 
@@ -56,11 +57,19 @@
 
 					<p>Statut</p>
 					 <select> 
-					<option value=1>Actif</option>
-					<option value=2>Suspendu</option>
-					<option value=3>Blessé</option>
-					<option value=4>Absent</option>
+						<option value=1>Actif</option>
+						<option value=2>Suspendu</option>
+						<option value=3>Blessé</option>
+						<option value=4>Absent</option>
 					</select> <br />
+					
+					<div class="photo_joueur">
+						<p> Insérez la photo du nouveau joueur. </p>
+						<input type="file" name="avatar"
+	       					accept="image/png, image/jpeg"> <br />
+					</div>
+
+					<a href="joueurs.php" class="bouton_retour">&laquo; Retour</a>
 
 					<input type="submit" value="Valider">
 				</form>

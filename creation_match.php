@@ -9,7 +9,7 @@
 <body>
 
 	<?php 
-		include('menu.html');
+		require('menu.html');
 	?>
 
 	<div class="content">
@@ -40,8 +40,8 @@
 	 				<input type="radio" name="lieu" value=2> 
 	 				 <label>Extérieur</label>  <br />
  					
-
-					<input type="submit" value="Valider">
+					<a href="matchs.php" class="bouton_retour">&laquo; Retour</a>
+					<input type="submit" value="Valider &raquo;">
 				</form>
 
 			</div>
