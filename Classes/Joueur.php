@@ -55,6 +55,7 @@ class Joueur
 
         if( $res > 0){
             echo('Le joueur existe déjà, vous pouvez le modifier à l\'adresse : ');
+            return 1;
         }
         else{
             $reqInsert = $linkpdo->prepare("insert into Joueur (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`, `commentaire`) VALUES (:numLicence, :nom, :prenom, :photo:, :dateNaissance, :taille, :poids, :postePrefere, :statut, :commentaire)");
