@@ -37,40 +37,42 @@ class Joueur
      * @param $statut
      * @param $commentaire
      */
-    public function addJoueur($licence, $nom, $prenom, $photo, $dateNaissance, $taille, $poids, $postePrefere, $statut, $commentaire){
+    public function addJoueur($licence, $nom, $prenom, $photo, $dateNaissance, $taille, $poids, $postePrefere, $statut){
         $this->numLicence = $licence;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->photo = $photo;
-        $this->dateNaissance = $dateNaissance;
+        $this->dateNaissance = date('Y-m-d',strtotime($dateNaissance));
         $this->taille=$taille;
         $this->poids = $poids;
         $this->postePrefere = $postePrefere;
         $this->statut = $statut;
-        $this->commentaire = $commentaire;
 
         $linkpdo = connectPDO();
         $res = $this->nbJoueurNum($licence);
-        echo($res);
 
         if( $res > 0){
             echo('Le joueur existe déjà, vous pouvez le modifier à l\'adresse : ');
-            return 1;
+            return 1; // Erreur 1 : Le joueur est déjà présent
         }
         else{
-            $reqInsert = $linkpdo->prepare("insert into Joueur (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`, `commentaire`) VALUES (:numLicence, :nom, :prenom, :photo:, :dateNaissance, :taille, :poids, :postePrefere, :statut, :commentaire)");
+            $reqInsert = $linkpdo->prepare("insert into Joueur (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`) VALUES (:numLicence, :nom, :prenom, :photo, :dateNaissance, :taille, :poids, :postePrefere, :statut)");
             $reqInsert->execute(array('numLicence'=>$licence,
                 'nom'=>$nom,
                 'prenom'=>$prenom,
                 'photo'=>$photo,
-                'dateNaissance'=>$dateNaissance,
+                'dateNaissance'=>$this->dateNaissance,
                 'taille'=>$taille,
                 'poids'=>$poids,
                 'postePrefere'=>$postePrefere,
-                'statut'=>$statut,
-                'commentaire'=>$commentaire));
+                'statut'=>$statut));
             $res = $this->nbJoueurNum($licence);
-            echo($res);
+            if ($res > 0){
+                return 0;
+            }
+            else{
+                return 2;//Erreur 2 : Erreur lors de l'insertion
+            }
         }
 
 

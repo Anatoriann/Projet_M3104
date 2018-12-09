@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `joueur` (
-  `numLicence` int(11) NOT NULL,
+  `numLicence` varchar(10) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
-  `photo` varchar(255) NOT NULL COMMENT 'Chemin de la photo',
+  `photo` varchar(255) default NULL COMMENT 'Chemin de la photo',
   `dateNaissance` date NOT NULL,
   `taille` double DEFAULT NULL,
   `poids` double DEFAULT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE `matchs` (
 --
 
 CREATE TABLE `participerremplacant` (
-  `numLicence` int(11) NOT NULL,
+  `numLicence` varchar(10) NOT NULL,
   `idMatch` int(11) NOT NULL,
   `posteOccupe` tinyint(4) NOT NULL,
   `notation` tinyint(4) NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE `participerremplacant` (
 --
 
 CREATE TABLE `participertitulaire` (
-  `numLicence` int(11) NOT NULL,
+  `numLicence` varchar(10) NOT NULL,
   `idMatch` int(11) NOT NULL,
   `posteOccupe` tinyint(4) NOT NULL,
   `notation` tinyint(4) NOT NULL,
