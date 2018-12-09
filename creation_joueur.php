@@ -1,3 +1,12 @@
+<?php
+require('Classes/joueur.php');
+if (!empty($_POST['num_licence'])){
+    //Faire la vérif des nulls alors qu'elle est faite dans le form ?
+    $joueur = new Joueur();
+    $res = $joueur->addJoueur($_POST['num_licence'],$_POST['nom'],$_POST['prenom'],$_POST['photo'],$_POST['dateN'], $_POST['taille'],$_POST['poids'],$_POST['postePrefere'],$_POST['statut']);
+    header("Location: traitement.php?error=$res");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +17,7 @@
 
 <body>
 
-    <?php
-    if (!isset($_POST)){
-        echo 'lol';
-    }
-    ?>
-
-	<?php 
+	<?php
 		require('menu.php');
 	?>
 
@@ -23,7 +26,7 @@
 				<p>Saisissez les informations relatives au nouveau joueur.</p>
 
 
-				<form action="traitement.php" method="post">
+				<form action="creation_joueur.php" method="post">
 					
 					<div class="info-joueur">
 			
@@ -34,8 +37,8 @@
 						<input name="prenom" type="text" placeholder="Prénom" required> <br />
 					</div>
  					
-					<p>Date et heure du match</p>
-					 <input name="date" type="date" placeholder="JJ/MM/AAAA" required>  <br />
+					<p>Date de naissance</p>
+					 <input name="dateN" type="date" placeholder="JJ/MM/AAAA" required>  <br />
 
 					<p>Taille</p>
 					 <input name="taille" type="number" placeholder="" required class="mensuration">m  <br />
