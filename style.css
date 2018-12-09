@@ -145,9 +145,9 @@ a {
 
 input[type=text] {
 	font-family: 'Roboto', Helvetica;
-	width: 15%;
+	width: 20%;
 	margin: 0;
-    	padding: 12px 20px;
+    padding: 12px 20px;
    	box-sizing: border-box;
 }
 
@@ -167,9 +167,10 @@ input[type=submit] {
 
 input[type=date] {
 	font-family: 'Roboto', Helvetica;
-	width: 7.5%;
+	width: 15%;
 	margin: 0;
-    	padding: 0 0.5em;
+    padding: 0 0.5em;
+    text-align: center;
    	box-sizing: border-box;
 }
 
@@ -190,16 +191,17 @@ input[type=submit]:hover {
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
-	-webkit-appearance : textfield;
-	-moz-appearance : textfield;
+	-webkit-appearance : none;
+	-moz-appearance : none;
 	
 }
 
 input[type=number] {	
 	appearance : none;
 	box-sizing : border-box;
-	width : 4%;
-	padding : 0.5em;
+	width : 6%;
+	text-align: center;
+	
 
 }
 

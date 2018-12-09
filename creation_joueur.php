@@ -41,10 +41,10 @@ if (!empty($_POST['num_licence'])){
 					 <input name="dateN" type="date" placeholder="JJ/MM/AAAA" required>  <br />
 
 					<p>Taille</p>
-					 <input name="taille" type="number" placeholder="" required class="mensuration">m  <br />
+					 <input name="taille" type="number" placeholder="0.00" min=0 step=0.01 required class="mensuration">m  <br />
 
 					<p>Poids</p>
-					 <input name="poids" type="number" placeholder="" required class="mensuration">Kg  <br />
+					 <input name="poids" type="number" placeholder="0.00" min=0 step=0.01 required class="mensuration">Kg  <br />
 
 					<p>Poste favori</p>
 					 <select name ="postePrefere">
