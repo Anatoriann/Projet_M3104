@@ -2,8 +2,7 @@
 require('Classes/joueur.php');
 if (!empty($_POST['num_licence'])){
     //Faire la vérif des nulls alors qu'elle est faite dans le form ?
-    $joueur = new Joueur();
-    $res = $joueur->addJoueur($_POST['num_licence'],$_POST['nom'],$_POST['prenom'],$_POST['photo'],$_POST['dateN'], $_POST['taille'],$_POST['poids'],$_POST['postePrefere'],$_POST['statut']);
+    $res = Joueur::addJoueur($_POST['num_licence'],$_POST['nom'],$_POST['prenom'],$_POST['photo'],$_POST['dateN'], $_POST['taille'],$_POST['poids'],$_POST['postePrefere'],$_POST['statut']);
     header("Location: traitement.php?error=$res");
 }
 ?>
