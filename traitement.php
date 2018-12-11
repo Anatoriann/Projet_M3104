@@ -10,7 +10,7 @@
 
 	<?php 
 		require('menu.php');
-		require('Classes.Erreurs.php');
+		require('Classes/Erreurs.php');
 	?>
 
 	<div class="content">
@@ -22,7 +22,7 @@
                     echo "<h3> L'opération a bien été prise en compte. </h3>";
                 } else {
                     $erreur = Erreurs::messageErreur($_GET['error']);
-                    echo $erreur;
+                    echo $erreur.'<br><br>';
                 }
 			?>
 			

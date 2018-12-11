@@ -85,5 +85,18 @@ class Joueur
         return $reqRecherche->rowCount();
     }
 
+    public function selectJoueurs(){
+        $linkpdo = connectPDO();
+        $reqRecherche = $linkpdo->prepare('select * from Joueur');
+        $reqRecherche->execute();
+        return $reqRecherche;
+    }
+
+    public function selectJoueur($numLicence){
+        $linkpdo = connectPDO();
+        $reqRecherche = $linkpdo->prepare('select * from Joueur where numLicence = :num');
+        $reqRecherche->execute()
+}
+
 
 }
