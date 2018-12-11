@@ -52,7 +52,6 @@ class Joueur
         $res = $this->nbJoueurNum($licence);
 
         if( $res > 0){
-            echo('Le joueur existe déjà, vous pouvez le modifier à l\'adresse : ');
             return 1; // Erreur 1 : Le joueur est déjà présent
         }
         else{

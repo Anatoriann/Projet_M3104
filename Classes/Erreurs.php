@@ -8,6 +8,13 @@
 class Erreurs{
 
     public static function messageErreur($erreur){
-
+        switch ($erreur){
+            case 1 :
+                $return = 'Le joueur existe déjà, veuillez passer par la page de modification';
+                break;
+            case 2:
+                $return = 'Erreur lors de l\'insertion';
+        }
+        return $return;
     }
 }

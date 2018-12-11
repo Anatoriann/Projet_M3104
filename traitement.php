@@ -10,6 +10,7 @@
 
 	<?php 
 		require('menu.php');
+		require('Classes.Erreurs.php');
 	?>
 
 	<div class="content">
@@ -18,9 +19,10 @@
 			<?php
                 // A reprendre en faisant une classe erreur ou un truc du style qui en fonction du numéro d'erreur affichera le bon message !
                 if ($_GET['error'] == 0) {
-                echo "<h3> L'opération a bien été prise en compte. </h3>";
+                    echo "<h3> L'opération a bien été prise en compte. </h3>";
                 } else {
-                echo "<p> L'opération n'a pas marché suite à une erreur. </p>";
+                    $erreur = Erreurs::messageErreur($_GET['error']);
+                    echo $erreur;
                 }
 			?>
 			
