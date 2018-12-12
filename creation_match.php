@@ -1,3 +1,10 @@
+<?php
+require('Classes/Matchs.php');
+if (!empty($_POST['equipe'])){
+    $res = Matchs::addMatch($_POST['equipe'],$_POST['date'], $_POST['time'], $_POST['lieu']);
+
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +15,7 @@
 
 <body>
 
-	<?php 
+	<?php
 		require('menu.php');
 	?>
 
@@ -19,11 +26,11 @@
 				<p>Saisissez les informations relatives au nouveau match.</p>
 
 
-				<form action="traitement.php" method="post">
+				<form action="creation_match.php" method="post">
 					<input name="equipe" type="text" placeholder="Nom de l'équipe adverse" required>  <br />
 
 					<p>Date et heure du match</p>
-					 <input name="date" type="date" placeholder="JJ/MM/AAAA" required> 
+					 <input name="date" type="date" placeholder="JJ/MM/AAAA" required>
 
 					<input name="time" type="time" placeholder = "--:--" required class="heure"> <br />
 

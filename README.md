@@ -7,3 +7,4 @@ To do list :
 - Affichage/modification joueurs
 - Statistiques
 - Notations des joueurs en fonctions des matchs
+

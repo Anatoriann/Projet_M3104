@@ -14,10 +14,13 @@ class Erreurs{
                 break;
             case 2:
                 $return = 'Erreur lors de l\'insertion';
+                break;
             case 3:
                 $return = 'Erreur lors de la suppression';
+                break;
             case 4:
                 $return = 'Joueur non supprimé';
+                break;
         }
         return $return;
     }
