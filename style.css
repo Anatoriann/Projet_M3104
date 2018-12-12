@@ -176,10 +176,11 @@ input[type=date] {
 
 input[type=time] {
 	font-family: 'Roboto', Helvetica;
-	width: 3%;
+	width: 8%;
 	margin: 0;
     	padding: 0 ;
    	box-sizing: border-box;
+	text-align : center;
 }
 
 
@@ -263,7 +264,7 @@ input[type=number] {
     cursor: pointer;
 	position : absolute;
 	bottom : 13%;
-	right : 9%;
+	right : 3%;
 }
 
 .affichage_matchs .bouton_creation:hover {
@@ -272,35 +273,39 @@ input[type=number] {
 	color: #4CAF50;
 
 }
-
-	table {
-	margin-right :  0.5em;
-	border-collapse: collapse;
-	width: 90%;
-	overflow-y: scroll;
+	.tableau_affichage {
+	height : 30em;
+	overflow : auto;
+	width : 96%;
 	}
 
-table td, td, th {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 1em;
+	.tableau_affichage table {
+	width : 100%;
+	border-collapse : separate;
+	border-spacing:0 5px;
+	}
 
-}
+	
 
-tr:hover{
+	.tableau_affichage tr {
+	background-color : #cccccc;
+
+	}
+
+
+	.tableau_affichage table td,.tableau_affichage  td,.tableau_affichage  th {
+	  text-align: center;
+	  padding: 1em 0;
+	}
+
+
+	.tableau_affichage  tr:hover{
 	background-color: #dddddd;
 	/* box-shadow: 10px 10px 8px #888888; */
-}
+	}
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
-td i {
-	font-size : ;
-}
-
-td i:hover {
+	.tableau_affichage td i:hover {
 	color: #ffff;
-}
+	}
 

@@ -16,60 +16,32 @@
 	<div class="content">
 			
 		<div class="affichage_matchs">
-			<p> Matchs à venir </p>	
+			<p> Liste des matchs </p>	
 
 			<a href="creation_match.php" class="bouton_creation"> Nouveau match </a>
 
 			<div class="tableau_affichage">
 				<table>
+				
 				  <tr>
-				    <td>Alfreds Futterkiste</td>
-				    <td>Maria Anders</td>
-				    <td>Germany</td>
+				   	 <td>17/07/2018</td>
+				  	  <td>15:00</td>
+				  	  <td>Golden States Warrior</td>
+					<td> Domicile </td>
+					<td> Attente de préparation </td>
+					<td onclick="valider_suppression()"> <i class="material-icons" >delete</i> </td>
 				  </tr>
-				  <tr>
-				    <td>Centro comercial Moctezuma</td>
-				    <td>Francisco Chang</td>
-				    <td>Mexico</td>
-				<td> <i class="material-icons" onclick="valider_suppression()">delete	</i> </td>
+				  
+					<tr>
+				    <td>17/07/2018</td>
+				    <td>15:00</td>
+				    <td>Golden States Warrior</td>
+				<td> Domicile </td>
+				<td> Attente de préparation </td>
+				<td onclick="valider_suppression()"> <i class="material-icons" >delete</i> </td>
+				
 				  </tr>
-				  <tr>
-				    <td>Ernst Handel</td>
-				    <td>Roland Mendel</td>
-				    <td>Austria</td>
-				  </tr>
-				  <tr>
-				    <td>Island Trading</td>
-				    <td>Helen Bennett</td>
-				    <td>UK</td>
-				  </tr>
-				  <tr>
-				    <td>Laughing Bacchus Winecellars</td>
-				    <td>Yoshi Tannamuri</td>
-				    <td>Canada</td>
-				  </tr>
-				  <tr>
-				    <td>Magazzini Alimentari Riuniti</td>
-				    <td>Giovanni Rovelli</td>
-				    <td>Italy</td>
-				  </tr>
-				<tr>
-				    <td>Magazzini Alimentari Riuniti</td>
-				    <td>Giovanni Rovelli</td>
-				    <td>Italy</td>
-				  </tr><tr>
-				    <td>Magazzini Alimentari Riuniti</td>
-				    <td>Giovanni Rovelli</td>
-				    <td>Italy</td>
-				  </tr><tr>
-				    <td>Magazzini Alimentari Riuniti</td>
-				    <td>Giovanni Rovelli</td>
-				    <td>Italy</td>
-				  </tr><tr>
-				    <td>Magazzini Alimentari Riuniti</td>
-				    <td>Giovanni Rovelli</td>
-				    <td>Italy</td>
-				  </tr>
+				  
 				</table>
 			</div>
 		</div>
