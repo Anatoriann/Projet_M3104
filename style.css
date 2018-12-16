@@ -244,15 +244,15 @@ input[type=number] {
 
 
 /* -------------------------------------------- 
-	 	PAGES DE VISUALISATION
+	 	PAGES DE VISUALISATION DES MATCHS
 ----------------------------------------------- */
 
-.affichage_matchs p {
+.affichage-titre {
 	font-size : 20px;
 	margin-top : 11.25%;
 }
 
-.affichage_matchs .bouton_creation {
+.bouton_creation {
 	font-family: 'Roboto', Helvetica;
 	font-size: 1em;
     background-color: #4CAF50;
@@ -267,7 +267,8 @@ input[type=number] {
 	right : 3%;
 }
 
-.affichage_matchs .bouton_creation:hover {
+.bouton_creation:hover {
+	text-decoration: none;
 	transition: 0.6s;
 	background-color: white;
 	color: #4CAF50;
@@ -280,7 +281,8 @@ input[type=number] {
 	}
 
 	.tableau_affichage table {
-	width : 100%;
+	margin: auto;
+	width : 99%;
 	border-collapse : separate;
 	border-spacing:0 5px;
 	}
@@ -288,7 +290,9 @@ input[type=number] {
 	
 
 	.tableau_affichage tr {
-	background-color : #cccccc;
+	box-shadow: 0 0 0.9pt 0.9pt #707070;
+	background-color : #EAEEE8;
+	outline: thin solid #707070;
 
 	}
 
@@ -309,3 +313,58 @@ input[type=number] {
 	color: #ffff;
 	}
 
+	.tableau-affichage-match {
+		cursor: pointer;
+	}
+
+	.delete-btn {
+		background-color: #f44256;
+ 		border: solid 1px #f44256; 
+  		color: white; 
+ 		padding: 0.8em 1em; 
+  		font-size: 1em;
+		cursor: pointer;
+		border-radius: 10%;
+		box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+	}
+
+	.delete-btn:hover {
+		background-color: white;
+		color : #f44256;
+		transition: 0.2s;
+	}
+
+	.fa-trash:hover {
+		color : #f44256 !important;
+	}
+
+
+/* -------------------------------------------- 
+	 	PAGES DE VISUALISATION DES JOUEURS
+----------------------------------------------- */
+
+.player-accordion {
+  width : 10em;
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1em;
+  transition: 0.4s;
+}
+
+.active, .player-accordion:hover {
+	background-color: #ccc;
+}
+
+.player-details {
+	width: 10em;
+ height: 2em;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
