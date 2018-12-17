@@ -18,14 +18,60 @@
 			
 		<p class="affichage-titre">Liste des joueurs</p>
 			<div class="affichage_joueurs">
-				<div class="affichage-joueurs-col">
+				<div class="affichage-joueurs-colg">
+					<button class="player-accordion">
+						<p class="player-rank player-info">8</p>
+						<p class="player-name player-info">Jordan Clarkson</p>
+						<p class="player-poste player-info">PG</p>
+						<p class="player-state player-info">Suspendu</p>
+						<a class="delete-btn " onclick="valider_suppression()"><i class="fa fa-trash"></i></a>
+						<a class="edit-btn "><i class="fa fa-edit"></i></a>
+					</button>
+					<div class="player-details">
+					  <img class="player-img">IMAGE</img>
+					  <p class="player-detail">Taille</p>
+					  <p class="player-detail">Poids</p>
+					  <p class="player-detail">Age</p>
+					</div>
+
+
 					<button class="player-accordion">Section 1</button>
 					<div class="player-details">
-					  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					  <p></p>
+					</div>
+
+
+					<button class="player-accordion">Section 1</button>
+					<div class="player-details">
+					  <p></p>
+					</div>
+					<button class="player-accordion">Section 1</button>
+					<div class="player-details">
+					  <p></p>
+					</div>
+
+
+				</div>
+			
+
+				<div class="affichage-joueurs-cold">
+					<button class="player-accordion">Section 1</button>
+					<div class="player-details">
+					  <p></p>
+					</div>
+
+
+					<button class="player-accordion">Section 1</button>
+					<div class="player-details">
+					  <p></p>
+					</div>
+
+
+					<button class="player-accordion">Section 1</button>
+					<div class="player-details">
+					  <p></p>
 					</div>
 				</div>
-
-
 
 
 				<a href="creation_joueur.php" class="bouton_creation">Nouveau joueur</a>
@@ -33,7 +79,11 @@
 	</div>
 
 <script>
+	/* voir ce qu'il renvoie, s'il renvoie une liste omettre les a */
 	var acc = document.getElementsByClassName("player-accordion");
+	acc.classList.remove("delete-btn");
+	acc.classList.remove("edit-btn");
+
 	var i;
 
 	for (i=0; i < acc.length; i++) {
@@ -47,6 +97,16 @@
 			}
 		});
 	}
+
+
+	function valider_suppression() {
+    var txt;
+    var r = confirm("Voulez-vous supprimer ce joueur ?");
+    if (r == true) {
+        alert("Joueur supprimé !");
+    }
+}
+
 </script>
 </body>
 </html>

@@ -342,29 +342,89 @@ input[type=number] {
 /* -------------------------------------------- 
 	 	PAGES DE VISUALISATION DES JOUEURS
 ----------------------------------------------- */
+.affichage_joueurs {
+	width : 95.7%;
+	height : 22em;
+	overflow: auto;
+	font-family: 'Roboto', Helvetica;
+}
 
 .player-accordion {
-  width : 10em;
+  width : 100%;
   background-color: #eee;
   color: #444;
   cursor: pointer;
-  padding: 18px;
-  border: none;
+  margin-bottom: 0.1em;
+  padding: 1.2em;
+  border: #707070 0.5px solid;
   text-align: left;
-  outline: none;
-  font-size: 1em;
+  font-size: 0.9em;
   transition: 0.4s;
+  outline: none;
 }
-
-.active, .player-accordion:hover {
-	background-color: #ccc;
+ .player-accordion:hover {
+	background-color: #DDDDDD;
 }
 
 .player-details {
-	width: 10em;
- height: 2em;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+/*	border-left: #707070 0.5px solid; */
+/*	border-right: #707070 0.5px solid; */
+	background-color : white;	
+	width: auto;
+	height: auto;	
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.5s ease-out;
+/*	margin-bottom:0.1em; */
+}
+
+
+.affichage-joueurs-colg, .affichage-joueurs-cold {
+	display: inline-block;
+	vertical-align: top;
+	width: 49.7%;
+	margin: auto;
+}
+
+.player-info {
+	font-weight: 3em;
+	display: inline-block;
+	padding: 0 1em;
+	text-align: center;
+	margin: 0;
+
+}
+
+.player-img {
+	display: inline;
+	height: auto;
+
+}
+.player-detail {
+	padding: auto;
+	width: 40%;
+	display: inline-block;
+}
+
+.edit-btn {
+		background-color: #ffa323;
+ 		border: solid 1px #ffa323; 
+  		color: white; 
+ 		padding: 0.8em 1em; 
+  		font-size: 1em;
+		cursor: pointer;
+		border-radius: 10%;
+		box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);		
+}
+
+
+
+.edit-btn:hover {
+	background-color: white;
+	color : #ffa323;
+	transition: 0.2s;
+	}
+
+.fa-edit:hover {
+	color : #ffa323 !important;
 }
