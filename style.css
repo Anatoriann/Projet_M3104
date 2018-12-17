@@ -43,6 +43,11 @@ nav a {
 
 }
 
+.deconnexion {
+	margin-top : 4em;
+	color : #FFD8A5;
+}
+
 nav a:hover {
 	background-color: #F59C4E;
 	transition: 0.4s;

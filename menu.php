@@ -6,6 +6,7 @@
 				<a href="joueurs.php">Gestion des joueurs</a>
 				<a href="matchs.php">Gestion des matchs </a>
 				<a href="statistiques.php">Statistiques des joueurs</a>
+				<a href="#" class="deconnexion">Déconnexion</a>
 				</div>
 			</nav>
 
