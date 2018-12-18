@@ -15,11 +15,15 @@
 	?>
 
 	<div class="content">
-			
+
 		<p class="affichage-titre">Liste des joueurs</p>
 			<div class="affichage_joueurs">
 				<div class="affichage-joueurs-colg">
 					<button class="player-accordion">
+                        <?php
+                            require('Classes/Joueur.php');
+                            $joueurs = Joueur::selectJoueurs();
+                        ?>
 						<p class="player-rank player-info">8</p>
 						<p class="player-name player-info">Jordan Clarkson</p>
 						<p class="player-poste player-info">PG</p>
@@ -49,7 +53,9 @@
 					<div class="player-details">
 					  <p></p>
 					</div>
+                    <?php
 
+                    ?>
 
 				</div>
 			

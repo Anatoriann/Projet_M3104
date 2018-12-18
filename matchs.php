@@ -37,15 +37,45 @@
                     require('Classes/Matchs.php');
                     $matchs = Matchs::selectMatchs();
                     foreach ($matchs as $m) {
+                        if ($m['resLocal']== null){
+                            $resLocal = 'Indisponible';
+                            $resAdv = 'Indisponible';
+                        }
+                        else{
+                            $resLocal = $m['resLocal'];
+                            $resAdv = $m['resAdv'];
+                        }
+
+                        switch($m['statut']){
+                            case 0 :
+                                $statut = 'Match en préparation';
+                                break;
+                            case 1 :
+                                $statut = 'Match prêt à être joué';
+                                break;
+                            case 2:
+                                $statut = 'Match fini, score renseigné';
+                                break;
+                        }
+
+                        if($m[('lieuDeRencontre')]==1){
+                            $lieuDeRencontre = 'Domicile';
+                        }
+                        else {
+                            $lieuDeRencontre = 'Exterieur';
+                        }
+
+                        $dateM = date('d/m/Y',strtotime($m['dateM']));
+                        $heureM = date('H:i', strtotime($m['heureM']));
                         ?>
                         <tr class="tableau-affichage-match">
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['dateM']; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['heureM']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $dateM; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $heureM; ?></td>
                             <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['nomAdversaire']; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['lieuDeRencontre']; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['resLocal']; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['resAdv']; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['statut']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $lieuDeRencontre; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $resLocal; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $resAdv; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $statut; ?></td>
                             <td>
                                 <div onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"></div>
                                 <a href="#">
