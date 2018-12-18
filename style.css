@@ -148,7 +148,7 @@ a {
 	margin-bottom: 1em;
 }
 
-input[type=text] {
+.content input[type=text], .content input[type=password] {
 	font-family: 'Roboto', Helvetica;
 	width: 20%;
 	margin: 0;
@@ -156,8 +156,7 @@ input[type=text] {
    	box-sizing: border-box;
 }
 
-
-input[type=submit] {
+.content input[type=submit] {
 	font-family: 'Roboto', Helvetica;
 	font-size: 1em;
     background-color: #4CAF50;
@@ -170,7 +169,7 @@ input[type=submit] {
     cursor: pointer;
 }
 
-input[type=date] {
+.content input[type=date] {
 	font-family: 'Roboto', Helvetica;
 	width: 15%;
 	margin: 0;
@@ -189,7 +188,7 @@ input[type=time] {
 }
 
 
-input[type=submit]:hover {
+.content input[type=submit]:hover {
 	transition: 0.6s;
 	background-color: white;
 	color: #4CAF50;
@@ -432,4 +431,50 @@ input[type=number] {
 
 .fa-edit:hover {
 	color : #ffa323 !important;
+}
+
+/* -------------------------------------------- 
+	 	FORMULAIRE DE CONNEXION
+----------------------------------------------- */
+
+.connexion-form {
+	display : block;
+}
+
+.connexion-container {
+	margin: auto;
+	width: 20%;
+	margin-top : 15em;
+	border: 3px solid green;
+	padding: 10px;
+}
+
+.login, .mdp {
+	font-family: 'Roboto', Helvetica;
+	width: 100%;
+	margin: 0;
+    	padding: 12px 20px;
+   	box-sizing: border-box;
+}
+
+.connexion-form-btn {
+
+	font-family: 'Roboto', Helvetica;
+	font-size: 1em;
+    background-color: #4CAF50;
+    border: solid 2px #4CAF50;
+    border-radius: 3px;	
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    display : block;
+    margin: auto;
+    cursor: pointer;
+}
+
+.connexion-form-btn:hover {
+	transition: 0.6s;
+	background-color: white;
+	color: #4CAF50;
+}
 }

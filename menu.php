@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+?>
 	
 			<nav>
 				<div class=nav>
