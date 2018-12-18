@@ -13,13 +13,22 @@ class Erreurs{
                 $return = 'Le joueur existe déjà, veuillez passer par la page de modification';
                 break;
             case 2:
-                $return = 'Erreur lors de l\'insertion';
+                $return = 'Erreur lors de l\'insertion du joueur';
                 break;
             case 3:
-                $return = 'Erreur lors de la suppression';
+                $return = 'Erreur lors de la suppression du joueur';
                 break;
             case 4:
-                $return = 'Joueur non supprimé';
+                $return = 'Joueur non mis à jour';
+                break;
+            case 5 :
+                $return = 'Le match est déjà présent dans la base';
+                break;
+            case 6:
+                $return = 'Erreur lors de l\'insertion du match';
+                break;
+            case 7:
+                $return = 'Erreur lors de la mise à jour du match';
                 break;
         }
         return $return;

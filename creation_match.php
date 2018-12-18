@@ -2,7 +2,7 @@
 require('Classes/Matchs.php');
 if (!empty($_POST['equipe'])){
     $res = Matchs::addMatch($_POST['equipe'],$_POST['date'], $_POST['time'], $_POST['lieu']);
-
+    header("Location: traitement.php?error=$res");
 }
 ?>
 <!DOCTYPE html>
@@ -14,8 +14,7 @@ if (!empty($_POST['equipe'])){
 </head>
 
 <body>
-
-	<?php
+    <?php
 		require('menu.php');
 	?>
 

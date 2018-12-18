@@ -23,20 +23,41 @@
 
 			<div class="tableau_affichage">
 				<table>
-				
-				  	<tr class="tableau-affichage-match">
-					   	<td onclick="window.location='lol.html';">17/07/2018</td>
-					  	<td onclick="window.location='lol.html';">15:00</td>
-					  	<td onclick="window.location='lol.html';">Golden States Warrior</td>
-						<td onclick="window.location='lol.html';"> Domicile </td>
-						<td onclick="window.location='lol.html';"> Attente de préparation </td>
-						<td>
-							<div onclick="window.location='lol.html';"></div>
-							<a href="#" >
-								<button class="delete-btn"  onclick="valider_suppression()"><i class="fa fa-trash"></i></button>
-							</a>
-						</td>
-				  	</tr>
+                    <tr class="tableau-affichage-match">
+                        <td>Date</td>
+                        <td>Heure</td>
+                        <td>Adversaire</td>
+                        <td>Lieu de rencontre</td>
+                        <td>Résultat local</td>
+                        <td>Résultat adversaire</td>
+                        <td>Statut</td>
+                        <td>Suppression</td>
+                    </tr>
+                    <?php
+                    require('Classes/Matchs.php');
+                    $matchs = Matchs::selectMatchs();
+                    foreach ($matchs as $m) {
+                        ?>
+                        <tr class="tableau-affichage-match">
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['dateM']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['heureM']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['nomAdversaire']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['lieuDeRencontre']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['resLocal']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['resAdv']; ?></td>
+                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['statut']; ?></td>
+                            <td>
+                                <div onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"></div>
+                                <a href="#">
+                                    <button class="delete-btn" onclick="valider_suppression()"><i
+                                                class="fa fa-trash"></i></button>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <?php
+                    }
+                    ?>
 				  
 				  
 				</table>
