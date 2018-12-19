@@ -10,9 +10,9 @@
 
 <body>
 
-	<?php 
+	<!--<?php
 		require('menu.php');
-	?>
+	?>-->
 
 	<div class="content">
 
@@ -24,7 +24,6 @@
                             require('Classes/Joueur.php');
                             $joueurs = Joueur::selectJoueurs();
                         ?>
-						<p class="player-rank player-info">8</p>
 						<p class="player-name player-info">Jordan Clarkson</p>
 						<p class="player-poste player-info">PG</p>
 						<p class="player-state player-info">Suspendu</p>
@@ -37,50 +36,8 @@
 					  <p class="player-detail">Poids</p>
 					  <p class="player-detail">Age</p>
 					</div>
-
-
-					<button class="player-accordion">Section 1</button>
-					<div class="player-details">
-					  <p></p>
-					</div>
-
-
-					<button class="player-accordion">Section 1</button>
-					<div class="player-details">
-					  <p></p>
-					</div>
-					<button class="player-accordion">Section 1</button>
-					<div class="player-details">
-					  <p></p>
-					</div>
-                    <?php
-
-                    ?>
-
 				</div>
-			
-
-				<div class="affichage-joueurs-cold">
-					<button class="player-accordion">Section 1</button>
-					<div class="player-details">
-					  <p></p>
-					</div>
-
-
-					<button class="player-accordion">Section 1</button>
-					<div class="player-details">
-					  <p></p>
-					</div>
-
-
-					<button class="player-accordion">Section 1</button>
-					<div class="player-details">
-					  <p></p>
-					</div>
-				</div>
-
-
-				<a href="creation_joueur.php" class="bouton_creation">Nouveau joueur</a>
+                <a href="creation_joueur.php" class="bouton_creation">Nouveau joueur</a>
 			</div>
 	</div>
 
