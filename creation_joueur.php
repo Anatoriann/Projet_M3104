@@ -25,16 +25,16 @@ if (!empty($_POST['num_licence'])){
 
 
 				<form action="creation_joueur.php" method="post">
-					
+
 					<div class="info-joueur">
-			
+
 						<div class="licence"> <input name="num_licence" type="text" placeholder="Numéro de licence" required > <br /> </div>
 
 						<input name="nom" type="text" placeholder="Nom" required> <br />
 
 						<input name="prenom" type="text" placeholder="Prénom" required> <br />
 					</div>
- 					
+
 					<p>Date de naissance</p>
 					 <input name="dateN" type="date" placeholder="JJ/MM/AAAA" required>  <br />
 
@@ -60,7 +60,12 @@ if (!empty($_POST['num_licence'])){
 						<option value=3>Blessé</option>
 						<option value=4>Absent</option>
 					</select> <br />
-					
+
+          <div class="commentaire">
+            <p>Commentaire</p>
+            <textarea placeholder="Insérer un commentaire" cols="30" rows="5" name="commentaire"></textarea> <br />
+        </div>
+
 					<div class="photo_joueur">
 						<p> Insérez la photo du nouveau joueur. </p>
 						<input type="file" name="photo"
