@@ -8,7 +8,7 @@ body {
 	background-color: #FFD8A5;
 }
 
-/* -------------------------------------------- 
+/* --------------------------------------------
 				SIDEBAR NAVIGATION BAR
 ----------------------------------------------- */
 
@@ -53,7 +53,7 @@ nav a:hover {
 	transition: 0.4s;
 }
 
-/* -------------------------------------------- 
+/* --------------------------------------------
 				HAUT DROITE DE PAGE
 ----------------------------------------------- */
 
@@ -61,7 +61,7 @@ nav a:hover {
 	position: absolute;
 	top: 2em;
 	right: 10em;
-	
+
 }
 
 .date p {
@@ -85,7 +85,7 @@ a {
 	padding-left: 20px;
 }
 
-/* -------------------------------------------- 
+/* --------------------------------------------
 				PAGE D'ACCUEIL
 ----------------------------------------------- */
 
@@ -131,7 +131,7 @@ a {
 }
 
 
-/* -------------------------------------------- 
+/* --------------------------------------------
 				PAGES DE CREATION
 ----------------------------------------------- */
 
@@ -161,7 +161,7 @@ a {
 	font-size: 1em;
     background-color: #4CAF50;
     border: solid 2px #4CAF50;
-    border-radius: 3px;	
+    border-radius: 3px;
     color: white;
     padding: 16px 40px;
     text-decoration: none;
@@ -194,19 +194,19 @@ input[type=time] {
 	color: #4CAF50;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
 	-webkit-appearance : none;
 	-moz-appearance : none;
-	
+
 }
 
-input[type=number] {	
+input[type=number] {
 	appearance : none;
 	box-sizing : border-box;
 	width : 6%;
 	text-align: center;
-	
+
 
 }
 
@@ -217,9 +217,9 @@ input[type=number] {
 
 .photo_joueur {
 	position : absolute;
-	top : 5%;	
+	top : 5%;
 	right : 50%;
-	
+
 }
 
 .bouton_retour {
@@ -237,17 +237,17 @@ input[type=number] {
     transition : 0.2s;
 }
 
-/* -------------------------------------------- 
+/* --------------------------------------------
 	 	PAGES DE TRAITEMENT
 ----------------------------------------------- */
 
 .message_etat {
-	margin-left : 1em;	
+	margin-left : 1em;
 	margin-top : 11%;
 }
 
 
-/* -------------------------------------------- 
+/* --------------------------------------------
 	 	PAGES DE VISUALISATION DES MATCHS
 ----------------------------------------------- */
 
@@ -261,14 +261,14 @@ input[type=number] {
 	font-size: 1em;
     background-color: #4CAF50;
     border: solid 2px #4CAF50;
-    border-radius: 3px;	
+    border-radius: 3px;
     color: white;
     padding: 16px 40px;
     text-decoration: none;
     cursor: pointer;
 	position : absolute;
-	bottom : 13%;
-	right : 3%;
+	bottom : 3em;
+	right : 4em;
 }
 
 .bouton_creation:hover {
@@ -279,9 +279,10 @@ input[type=number] {
 
 }
 	.tableau_affichage {
-	height : 30em;
+	height : 25em;
 	overflow : auto;
 	width : 96%;
+
 	}
 
 	.tableau_affichage table {
@@ -291,7 +292,7 @@ input[type=number] {
 	border-spacing:0 5px;
 	}
 
-	
+
 
 	.tableau_affichage tr {
 	box-shadow: 0 0 0.9pt 0.9pt #707070;
@@ -303,7 +304,7 @@ input[type=number] {
 
 	.tableau_affichage table td,.tableau_affichage  td,.tableau_affichage  th {
 	  text-align: center;
-	  padding: 1em 0;
+	  padding: 1em 0.5em;
 	}
 
 
@@ -323,9 +324,9 @@ input[type=number] {
 
 	.delete-btn {
 		background-color: #f44256;
- 		border: solid 1px #f44256; 
-  		color: white; 
- 		padding: 0.8em 1em; 
+ 		border: solid 1px #f44256;
+  		color: white;
+ 		padding: 0.8em 1em;
   		font-size: 1em;
 		cursor: pointer;
 		border-radius: 10%;
@@ -343,97 +344,88 @@ input[type=number] {
 	}
 
 
-/* -------------------------------------------- 
+/* --------------------------------------------
 	 	PAGES DE VISUALISATION DES JOUEURS
 ----------------------------------------------- */
-.affichage_joueurs {
+.affichage-joueurs {
 	width : 95.7%;
 	height : 22em;
 	overflow: auto;
 	font-family: 'Roboto', Helvetica;
 }
 
-.player-accordion {
-  width : 100%;
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  margin-bottom: 0.1em;
-  padding: 1.2em;
-  border: #707070 0.5px solid;
-  text-align: left;
-  font-size: 0.9em;
-  transition: 0.4s;
-  outline: none;
-}
- .player-accordion:hover {
-	background-color: #DDDDDD;
-}
-
-.player-details {
-/*	border-left: #707070 0.5px solid; */
-/*	border-right: #707070 0.5px solid; */
-	background-color : white;	
-	width: auto;
-	height: auto;	
-	max-height: 0;
-	overflow: hidden;
-	transition: max-height 0.5s ease-out;
-/*	margin-bottom:0.1em; */
-}
-
-
 .affichage-joueurs-colg, .affichage-joueurs-cold {
 	display: inline-block;
 	vertical-align: top;
-	width: 49.7%;
+	width: 49%;
 	margin: auto;
 }
 
-.player-info {
-	display: inline-block;
-	padding: 0 1em;
+.player-accordion {
+	font-family: 'Roboto', Helvetica;
+	font-size: 0.9em;
 	text-align: center;
-	margin: 0;
-
+	background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 2em 0.5em;
+  width: 100%;
+  border: 1px solid #CDCDCD;
+  outline: none;
+  transition: 0.4s;
 }
 
-.player-img {
+.affichage-joueur {
+		margin-bottom: 0.1em;
+		box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
+}
+
+.player-accordion:hover {
+  background-color: #ccc;
+}
+
+.player-info {
 	display: inline;
-	height: auto;
-
-}
-.player-detail {
-	padding: auto;
-	width: 40%;
-	display: inline-block;
+	padding: 0.5em;
 }
 
+.player-panel {
+	height : auto;
+	width: auto;
+	padding: 0 1em;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
 .edit-btn {
-		background-color: #ffa323;
- 		border: solid 1px #ffa323; 
-  		color: white; 
- 		padding: 0.8em 1em; 
-  		font-size: 1em;
-		cursor: pointer;
-		border-radius: 10%;
-		box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);		
+	background-color: #f4b042;
+	border: solid 1px #f4b042;
+	color: white;
+	padding: 0.8em 1em;
+	font-size: 1em;
+	cursor: pointer;
+	border-radius: 10%;
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 }
-
-
 
 .edit-btn:hover {
 	background-color: white;
-	color : #ffa323;
+	color : #f4b042;
 	transition: 0.2s;
-	}
-
-.fa-edit:hover {
-	color : #ffa323 !important;
 }
 
-/* -------------------------------------------- 
-	 	FORMULAIRE DE CONNEXION
+.fa-edit:hover {
+	color : #f4b042!important;
+}
+
+.player-pinfo {
+	text-align: center;
+
+}
+
+/* --------------------------------------------
+	 					FORMULAIRE DE CONNEXION
 ----------------------------------------------- */
 
 .connexion-form {
@@ -460,15 +452,15 @@ input[type=number] {
 
 	font-family: 'Roboto', Helvetica;
 	font-size: 1em;
-    background-color: #4CAF50;
-    border: solid 2px #4CAF50;
-    border-radius: 3px;	
-    color: white;
-    padding: 1em 1.5em;
-    text-decoration: none;
-    display : block;
-    margin: auto;
-    cursor: pointer;
+  background-color: #4CAF50;
+  border: solid 2px #4CAF50;
+  border-radius: 3px;
+  color: white;
+  padding: 1em 1.5em;
+  text-decoration: none;
+  display : block;
+  margin: auto;
+  cursor: pointer;
 }
 
 .connexion-form-btn:hover {

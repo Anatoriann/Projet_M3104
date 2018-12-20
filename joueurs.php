@@ -10,48 +10,86 @@
 
 <body>
 
-	<!--<?php
+	<?php
 		require('menu.php');
-	?>-->
+		require('Classes/Joueur.php');
+		$joueurs = Joueur::selectJoueurs();
+	?>
 
-	<div class="content">
+<div class="content">
+	<p class="affichage-titre">Liste des joueurs</p>
 
-		<p class="affichage-titre">Liste des joueurs</p>
-			<div class="affichage_joueurs">
-				<div class="affichage-joueurs-colg">
-					<button class="player-accordion">
-                        <?php
-                            require('Classes/Joueur.php');
-                            $joueurs = Joueur::selectJoueurs();
-                        ?>
-						<p class="player-name player-info">Jordan Clarkson</p>
-						<p class="player-poste player-info">PG</p>
-						<p class="player-state player-info">Suspendu</p>
-						<a class="delete-btn " onclick="valider_suppression()"><i class="fa fa-trash"></i></a>
-						<a class="edit-btn "><i class="fa fa-edit"></i></a>
-					</button>
-					<div class="player-details">
-					  <img class="player-img">IMAGE</img>
-					  <p class="player-detail">Taille</p>
-					  <p class="player-detail">Poids</p>
-					  <p class="player-detail">Age</p>
+
+			<div class="affichage-joueurs">
+					<div class="affichage-joueurs-colg">
+
+							<div class="affichage-joueur">
+											<button class="player-accordion">
+														<div class="player-info">Jordan Clarkson</div>
+														<div class="player-info">PG</div>
+														<div class="player-info">Suspendu</div>
+														<div class="player-info">28 ans</div>
+														<div class="player-info">
+																<a href="#" class="delete-btn"><i class="fa fa-trash"></i></a>
+														</div>
+														<div class="player-info">
+																<a href="#" class="edit-btn"><i class="fa fa-edit"></i></a>
+														</div>
+											</button>
+											<div class="player-panel">
+														<p class="player-pinfo">Poids </p>
+														<p class="player-pinfo">Taille </p>
+														<p class="player-pinfo">Commentaire pas trop long stp</p>
+											</div>
+						</div>
+
+						<div class="affichage-joueur">
+										<button class="player-accordion">aaaaa
+										</button>
+										<div class="player-panel">aa
+										</div>
+									</div>
 					</div>
-				</div>
-                <a href="creation_joueur.php" class="bouton_creation">Nouveau joueur</a>
+
+						<div class="affichage-joueurs-cold">
+							<div class="affichage-joueur">
+											<button class="player-accordion">
+														<div class="player-info">Jordan Clarkson</div>
+														<div class="player-info">PG</div>
+														<div class="player-info">Suspendu</div>
+														<div class="player-info">28 ans</div>
+														<div class="player-info">
+																<a href="#" class="delete-btn"><i class="fa fa-trash"></i></a>
+														</div>
+														<div class="player-info">
+																<a href="#" class="edit-btn"><i class="fa fa-edit"></i></a>
+														</div>
+											</button>
+											<div class="player-panel">
+														<p class="player-pinfo">Poids </p>
+														<p class="player-pinfo">Taille </p>
+														<p class="player-pinfo">Commentaire pas trop long stp</p>
+											</div>
+										</div>
+						</div>
+
+
+
+					</div>
 			</div>
-	</div>
+
+			<a href="creation_joueur.php" class="bouton_creation"> Nouveau joueur </a>
+</div>
 
 <script>
-	/* voir ce qu'il renvoie, s'il renvoie une liste omettre les a */
+
 	var acc = document.getElementsByClassName("player-accordion");
-	acc.classList.remove("delete-btn");
-	acc.classList.remove("edit-btn");
+
 
 	var i;
 
 	for (i=0; i < acc.length; i++) {
 		acc[i].addEventListener("click", function() {
-			this.classList.toggle("active");
 			var panel = this.nextElementSibling;
 			if (panel.style.maxHeight) {
 				panel.style.maxHeight = null;
