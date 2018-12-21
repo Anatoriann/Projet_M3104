@@ -1,6 +1,11 @@
 <?php
     $server = 'localhost';
-    $db = 'lhn3042a';
-    $login = 'lhn3042a';
-    $mdp = 'EygEgp9b';
+
+    $db = 'application';
+    $login = 'root';
+    $mdp = '$iutinfo';
+
+    //$db = 'lhn3042a';
+    //$login = 'lhn3042a';
+    //$mdp = 'EygEgp9b';
 ?>

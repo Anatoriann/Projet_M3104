@@ -1,5 +1,3 @@
 <?php
-require('Joueur.php');
-$joueur = new Joueur();
-$joueur->addJoueur(1235,null,null,null,null,null,null,null,null,null);
-?>
+require('Classes/Match.php');
+echo Match::addResultat('0','3','11');

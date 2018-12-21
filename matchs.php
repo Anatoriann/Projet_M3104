@@ -34,8 +34,8 @@
                         <td>Suppression</td>
                     </tr>
                     <?php
-                    require('Classes/Matchs.php');
-                    $matchs = Matchs::selectMatchs();
+                    require('Classes/Match.php');
+                    $matchs = Match::selectMatchs();
                     foreach ($matchs as $m) {
                         if ($m['resLocal']== null){
                             $resLocal = 'Indisponible';

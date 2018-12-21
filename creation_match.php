@@ -1,7 +1,7 @@
 <?php
-require('Classes/Matchs.php');
+require('Classes/Match.php');
 if (!empty($_POST['equipe'])){
-    $res = Matchs::addMatch($_POST['equipe'],$_POST['date'], $_POST['time'], $_POST['lieu']);
+    $res = Match::addMatch($_POST['equipe'],$_POST['date'], $_POST['time'], $_POST['lieu']);
     header("Location: traitement.php?error=$res");
 }
 ?>
