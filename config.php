@@ -2,5 +2,5 @@
     $server = 'localhost';
     $db = 'application';
     $login = 'root';
-    $mdp = '';
+    $mdp = '$iutinfo';
 ?>

@@ -6,7 +6,7 @@
  * Time: 14:17
  */
 
-require('connectPDO.php');
+require_once('connectPDO.php');
 
 class Joueur
 {

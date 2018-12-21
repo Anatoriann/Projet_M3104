@@ -30,6 +30,21 @@ class Erreurs{
             case 7:
                 $return = 'Erreur lors de la mise à jour du match';
                 break;
+            case  8 :
+                $return = 'Joueur déjà titulaire dans ce match';
+                break;
+            case 9 :
+                $return = 'L\'un des arguments est vide';
+                break;
+            case 10:
+                $return = 'Titulaire non inséré';
+                break;
+            case 11 :
+                $return = 'Joueur inexistant';
+                break;
+            case 12 :
+                $return = 'Match inexistant';
+                break;
         }
         return $return;
     }

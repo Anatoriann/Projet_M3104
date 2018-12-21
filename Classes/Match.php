@@ -6,9 +6,9 @@
  * Time: 14:17
  */
 
-require('connectPDO.php');
+require_once('connectPDO.php');
 
-class Matchs
+class Match
 {
 
     public static function addMatch($adversaire, $dateM, $heureM, $lieuDeRencontre){
@@ -48,6 +48,11 @@ class Matchs
         return 0;
     }
 
+    public static function nbMatchs($idMatch){
+        $reqRech=self::selectMatch($idMatch);
+        return $reqRech->rowCount();
+    }
+
     public static function selectMatchs()
     {
         $linkpdo = connectPDO();
@@ -82,6 +87,10 @@ class Matchs
 
     public static function addResultat($resAdv, $resLocal, $idMatch){
         $linkpdo = connectPDO();
-        // On verra plus tard
+        $reqUpdate = $linkpdo->prepare("update `matchs` set `resAdv` = :resAdv, `resLocal`=:resLocal where `idMatch` = :idM");
+        $reqUpdate->execute(array('resAdv' => $resAdv, 'resLocal' => $resLocal, 'idM' => $idMatch));
+        return 0;
     }
+
+    // Fonction modifier statut
 }
