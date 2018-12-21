@@ -205,10 +205,18 @@ input[type=number] {
 	appearance : none;
 	box-sizing : border-box;
 	width : 6%;
+	padding : 1em 0.5em;
 	text-align: center;
-
-
 }
+
+.match-resultats {
+	margin-top : 2em;
+}
+
+.match-resultats input[type=number] {
+	width : 12%;
+}
+
 
 .licence {
 	margin-top : 2em;
