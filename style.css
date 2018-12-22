@@ -485,3 +485,9 @@ input[type=number] {
 	background-color: white;
 	color: #4CAF50;
 }
+
+.erreur-connexion {
+	color : #ed2525;
+	font-size: 0.9em;
+	 text-align: center;
+}

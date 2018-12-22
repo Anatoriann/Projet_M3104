@@ -1,4 +1,5 @@
 <?php
+require('session.php');
 require('Classes/Match.php');
 if (!empty($_POST['equipe'])){
     $res = Match::addMatch($_POST['equipe'],$_POST['date'], $_POST['time'], $_POST['lieu']);
@@ -19,7 +20,7 @@ if (!empty($_POST['equipe'])){
 	?>
 
 	<div class="content">
-			
+
 
 			<div class="formulaire">
 				<p>Saisissez les informations relatives au nouveau match.</p>
@@ -35,8 +36,8 @@ if (!empty($_POST['equipe'])){
 
 					<p> Lieu de rencontre </p>
 					<input type="radio" name="lieu" value=1 checked>
- 					 <label>Domicile</label>  <br />				
-	 				<input type="radio" name="lieu" value=2> 
+ 					 <label>Domicile</label>  <br />
+	 				<input type="radio" name="lieu" value=2>
 	 				 <label>Extérieur</label>  <br />
 					<!-- Si statut = terminé enlever le readonly -->
 
@@ -45,7 +46,7 @@ if (!empty($_POST['equipe'])){
 						<input type="number" name="resultat_equipe" placeholder="score de l'équipe" readonly> -
 						<input type="number" name="resultat_adversaire" placeholder="score de l'adversaire" readonly>	<br/>
 					</div>
- 					
+
 					<a href="matchs.php" class="bouton_retour">&laquo; Retour</a>
 					<input type="submit" value="Valider &raquo;">
 				</form>

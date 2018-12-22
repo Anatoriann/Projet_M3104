@@ -24,16 +24,16 @@
 			$mdpcorrect = password_verify($_POST['password'], $res['mdp']);
 
 			if (!$res) {
-				echo '<div class="erreur-connexion>Mauvais identifiant ou mot de passe</div>';
+				$erreur = true;
 			} else {
-				 if ($mdpcorrect) {
-					 	header('Location: home.php');
-					 session_start();
-					 $_SESSION['id'] = $res['id'];
-					 $_SESSION['pseudo'] = $pseudo;
-				 } else {
-					 echo '<div class="erreur-connexion>Mauvais identifiant ou mot de passe</div>';
-				 }
+					 if ($mdpcorrect) {
+						 	header('Location: home.php');
+						 session_start();
+						 $_SESSION['id'] = $res['id'];
+						 $_SESSION['pseudo'] = $pseudo;
+					 } else {
+						 $erreur = true;
+					 }
 			}
 		}
 
@@ -45,6 +45,12 @@
 	<form action="" method="post" >
 		Login  <input type="text" name="login" required class="connexion-form login">
 		Mot de passe  <input type="password" name="password" required class="connexion-form mdp"> <br />
+		<?php
+			if (isset($erreur) and $erreur) {
+				echo '<div class="erreur-connexion">Mauvais identifiant ou mot de passe</div>';
+			}
+		?>
+		<br />
 		<input type="submit" name="connexion" value="Connexion" class="connexion-form-btn">
 	</form>
 </div>

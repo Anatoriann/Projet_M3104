@@ -1,3 +1,6 @@
+<?php
+require('session.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
 	?>
 
 	<div class="content">
-			
+
 
 			<div class="formulaire">
 				<p>Sélectionnez les joueurs que vous voulez assigner à ce match.</p>
@@ -24,7 +27,7 @@
 
 
 				<div class="affichage-joueurs-colg">
-				
+
 					<p>Meneur</p>
 					 <select>
 					  <option value="volvo">Volvo</option>
@@ -63,13 +66,13 @@
 					  <option value="saab">Saab</option>
 					  <option value="mercedes">Mercedes</option>
 					  <option value="audi">Audi</option>
-					</select>  <br>		
+					</select>  <br>
 
-				</div>			
+				</div>
 
 
 					<div class="affichage-joueurs-cold">
-				
+
 						<p>Remplaçant 1</p>
 						 <select>
 						  <option value="volvo">Volvo</option>
@@ -108,7 +111,7 @@
 						  <option value="saab">Saab</option>
 						  <option value="mercedes">Mercedes</option>
 						  <option value="audi">Audi</option>
-						</select>  <br>		
+						</select>  <br>
 
 						<p>Remplaçant 6</p>
 						 <select>
@@ -116,7 +119,7 @@
 						  <option value="saab">Saab</option>
 						  <option value="mercedes">Mercedes</option>
 						  <option value="audi">Audi</option>
-						</select>  <br>	
+						</select>  <br>
 
 
 						<p>Remplaçant 7</p>
@@ -125,11 +128,11 @@
 						  <option value="saab">Saab</option>
 						  <option value="mercedes">Mercedes</option>
 						  <option value="audi">Audi</option>
-						</select>  <br>	
-	
-					    </div>			
+						</select>  <br>
 
-					
+					    </div>
+
+
 					<a href="modifier_match.php" class="bouton-modification"><i class="fa fa-edit"></i>Modifier match</a>
 					<input type="submit" value="Valider &raquo;" class="valider-assignation-joueur">
 				</form>

@@ -1,3 +1,6 @@
+<?php
+require('session.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +13,14 @@
 
 <body>
 
-	<?php 
+	<?php
 		require('menu.php');
 	?>
 
 	<div class="content">
-			
+
 		<div class="affichage_matchs">
-			<p class="affichage-titre">Liste des matchs </p>	
+			<p class="affichage-titre">Liste des matchs </p>
 
 			<a href="creation_match.php" class="bouton_creation"> Nouveau match </a>
 
@@ -88,12 +91,12 @@
                         <?php
                     }
                     ?>
-				  
-				  
+
+
 				</table>
 			</div>
 		</div>
-		
+
 	</div>
 
 

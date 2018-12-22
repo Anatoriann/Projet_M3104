@@ -1,3 +1,6 @@
+<?php
+require('session.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +10,11 @@
 </head>
 
 <body>
-		<?php 
+		<?php
 		require('menu.php');
 		 ?>
 
-		
+
 		<div class="content">
 
 
