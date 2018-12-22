@@ -1,40 +1,42 @@
-<?php 
-	session_start();
-?>
-
 <!DOCTYPE html>
 <html>
-<head>	
+<head>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta charset="utf-8">
-	<title>Écran de connexion</title>
+	<title>Connexion</title>
 </head>
 <body>
 
 
-<?php 
-	$login = "lol";
-	$mdp = "lol";
+<?php
+
+	require('connectPDO.php');
+	$linkpdo = connectPDO();
 
 	if (!empty($_POST)) {
-		$login = $_POST["login"];
-		$mdp = $_POST["password"];
+			$pseudo = $_POST['login'];
+			$req = $linkpdo->prepare('SELECT id,mdp FROM user WHERE pseudo = :pseudo');
+			$req->execute(array('pseudo' => $pseudo));
+			$res = $req->fetch();
 
-		if ($login == 'lol' && $mdp == 'lol') {
-		$_SESSION["valid"] = true;
-		$_SESSION["username"] = $login;
-		header('Location: home.php');
-		
-		} else {
-		echo "Vous avez entré des informations invalides";
+			$mdpcorrect = password_verify($_POST['password'], $res['mdp']);
+
+			if (!$res) {
+				echo '<div class="erreur-connexion>Mauvais identifiant ou mot de passe</div>';
+			} else {
+				 if ($mdpcorrect) {
+					 	header('Location: home.php');
+					 session_start();
+					 $_SESSION['id'] = $res['id'];
+					 $_SESSION['pseudo'] = $pseudo;
+				 } else {
+					 echo '<div class="erreur-connexion>Mauvais identifiant ou mot de passe</div>';
+				 }
+			}
 		}
-}
 
-	
-
-	
 ?>
 
 

@@ -5,6 +5,7 @@ if (!empty($_POST['num_licence'])){
     header("Location: traitement.php?error=$res");
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
