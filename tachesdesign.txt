@@ -1,0 +1,6 @@
+Pour le site de PHP :
+- Ajouter le système de notations par étoiles que ce soit sur l'accordéon ou le panel
+- Faire en sorte que l'accordéon ne s'active pas automatiquement lorsqu'on clique sur le select
+- Arranger les boutons en absolu
+- Faire le responsive avec flexbox
+- Rendre l'écran de connexion joli

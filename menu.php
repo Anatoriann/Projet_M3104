@@ -4,7 +4,7 @@
 				<a href="home.php">Home</a>
 				<a href="joueurs.php">Gestion des joueurs</a>
 				<a href="matchs.php">Gestion des matchs </a>
-				<a href="statistiques.php">Statistiques des joueurs</a>
+				<a href="statistiques.php">Statistiques	</a>
 				<a href="deconnexion.php" class="deconnexion">Déconnexion</a>
 				</div>
 			</nav>

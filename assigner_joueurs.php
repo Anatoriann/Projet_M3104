@@ -22,123 +22,89 @@ require('session.php');
 			<div class="formulaire">
 				<p>Sélectionnez les joueurs que vous voulez assigner à ce match.</p>
 
+				<div class="affichage-joueurs">
+						<div class="affichage-joueurs-colg">
+
+								<div class="affichage-joueur">
+												<button class="player-accordion">
+															<div class="player-info">Meneur</div>
+															<div class="player-info">
+																<select>
+																	<option>Jordan Clarkson</option>
+																</select>
+															</div>
+															<div class="player-info">Suspendu</div>
+															<div class="player-info">28 ans</div>
+												</button>
+												<div class="player-panel">
+															<p class="player-pinfo">Poids </p>
+															<p class="player-pinfo">Taille </p>
+															<p class="player-pinfo">Commentaire pas trop long stp</p>
+												</div>
+							</div>
+
+							<div class="affichage-joueur">
+											<button class="player-accordion">aaaaa
+											</button>
+											<div class="player-panel">
+												<p class="player-pinfo">Poids </p>
+												<p class="player-pinfo">Taille </p>
+												<p class="player-pinfo">Commentaire pas trop long stp</p>
+											</div>
+										</div>
+						</div>
+
+							<div class="affichage-joueurs-cold">
+								<div class="affichage-joueur">
+												<button class="player-accordion">
+															<div class="player-info">Remplaçant 1</div>
+															<div class="player-info">
+																<select>
+																	<option>Jordan Clarkson</option>
+																</select>
+															</div>
+															<div class="player-info">Suspendu</div>
+															<div class="player-info">28 ans</div>
+												</button>
+												<div class="player-panel">
+															<p class="player-pinfo">Poids </p>
+															<p class="player-pinfo">Taille </p>
+															<p class="player-pinfo">Commentaire pas trop long stp</p>
+												</div>
+							</div>
+						</div>
 
 				<form action="" method="post">
 
 
-				<div class="affichage-joueurs-colg">
 
-					<p>Meneur</p>
-					 <select>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					</select>  <br>
-
-					<p>Arrière</p>
-					 <select>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					</select>  <br>
-
-					<p>Ailier</p>
-					 <select>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					</select>  <br>
-
-					<p>Ailier fort</p>
-					 <select>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					</select>  <br>
-
-					<p>Pivot</p>
-					 <select>
-					  <option value="volvo">Volvo</option>
-					  <option value="saab">Saab</option>
-					  <option value="mercedes">Mercedes</option>
-					  <option value="audi">Audi</option>
-					</select>  <br>
-
-				</div>
-
-
-					<div class="affichage-joueurs-cold">
-
-						<p>Remplaçant 1</p>
-						 <select>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						</select>  <br>
-
-						<p>Remplaçant 2</p>
-						 <select>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						</select>  <br>
-
-						<p>Remplaçant 3</p>
-						 <select>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						</select>  <br>
-
-						<p>Remplaçant 4</p>
-						 <select>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						</select>  <br>
-
-						<p>Remplaçant 5</p>
-						 <select>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						</select>  <br>
-
-						<p>Remplaçant 6</p>
-						 <select>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						</select>  <br>
-
-
-						<p>Remplaçant 7</p>
-						 <select>
-						  <option value="volvo">Volvo</option>
-						  <option value="saab">Saab</option>
-						  <option value="mercedes">Mercedes</option>
-						  <option value="audi">Audi</option>
-						</select>  <br>
-
-					    </div>
-
-
+					<div class="boutons-assignation">
+					<a href="matchs.php" class="bouton_retour">« Retour</a>
 					<a href="modifier_match.php" class="bouton-modification"><i class="fa fa-edit"></i>Modifier match</a>
 					<input type="submit" value="Valider &raquo;" class="valider-assignation-joueur">
+				</div>
 				</form>
 
 			</div>
 	</div>
 
+	<script>
+
+		var acc = document.getElementsByClassName("player-accordion");
+
+
+		var i;
+
+		for (i=0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function() {
+				var panel = this.nextElementSibling;
+				if (panel.style.maxHeight) {
+					panel.style.maxHeight = null;
+				} else {
+					panel.style.maxHeight = panel.scrollHeight + "px";
+				}
+			});
+		}
+	</script>
 </body>
 </html>
