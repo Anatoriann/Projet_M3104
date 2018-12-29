@@ -27,7 +27,7 @@
 			?>
 			
 			<a href=<?php
-				 echo $_SERVER['HTTP_REFERER'].'&ret=1'  ?>
+				 echo $_SERVER['HTTP_REFERER']  ?>
 			 class="bouton_retour">&laquo; Retour</a>
 		</div>
 	</div>

@@ -26,9 +26,6 @@ else if(!empty($_GET['numLicence'])){
 else {
     header("Location: joueurs.php");
 }
-if(!empty($_GET['ret'])){
-    header("Location: joueurs.php");
-}
 ?>
 
 <!DOCTYPE html>
