@@ -41,12 +41,6 @@ if (!empty($_POST['equipe'])){
 	 				 <label>Extérieur</label>  <br />
 					<!-- Si statut = terminé enlever le readonly -->
 
-					<div class="match-resultats">
-						<p> Résultats </p>
-						<input type="number" name="resultat_equipe" placeholder="score de l'équipe" readonly> -
-						<input type="number" name="resultat_adversaire" placeholder="score de l'adversaire" readonly>	<br/>
-					</div>
-
 					<a href="matchs.php" class="bouton_retour">&laquo; Retour</a>
 					<input type="submit" value="Valider &raquo;">
 				</form>

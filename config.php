@@ -3,7 +3,7 @@
 
     $db = 'application';
     $login = 'root';
-    // $mdp = '$iutinfo';
+    $mdp = '$iutinfo';
 
-    $mdp = '';
+   // $mdp = '';
 ?>

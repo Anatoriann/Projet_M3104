@@ -10,7 +10,7 @@ require_once('connectPDO.php');
 
 class Joueur
 {
-    public static function addJoueur($licence, $nom, $prenom, $photo, $dateNaissance, $taille, $poids, $postePrefere, $statut)
+    public static function addJoueur($licence, $nom, $prenom, $photo, $dateNaissance, $taille, $poids, $postePrefere, $statut, $commentaire)
     {
 
         $linkpdo = connectPDO();
@@ -19,7 +19,7 @@ class Joueur
         if ($res > 0) {
             return 1; // Erreur 1 : Le joueur est déjà présent
         } else {
-            $reqInsert = $linkpdo->prepare("insert into Joueur (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`) VALUES (:numLicence, :nom, :prenom, :photo, :dateNaissance, :taille, :poids, :postePrefere, :statut)");
+            $reqInsert = $linkpdo->prepare("insert into Joueur (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`, `commentaire`) VALUES (:numLicence, :nom, :prenom, :photo, :dateNaissance, :taille, :poids, :postePrefere, :statut, :commentaire)");
             $reqInsert->execute(array('numLicence' => $licence,
                 'nom' => $nom,
                 'prenom' => $prenom,
@@ -28,7 +28,8 @@ class Joueur
                 'taille' => $taille,
                 'poids' => $poids,
                 'postePrefere' => $postePrefere,
-                'statut' => $statut));
+                'statut' => $statut,
+                'commentaire' => $commentaire));
             $res = Joueur::nbJoueurNum($licence);
             if ($res > 0) {
                 return 0;
@@ -64,12 +65,12 @@ class Joueur
         return $reqRecherche;
     }
 
-    public static function updateJoueur($licence, $nom, $prenom, $photo, $dateNaissance, $taille, $poids, $postePrefere, $statut, $commentaire){        $linkpdo = connectPDO();
+    public static function updateJoueur($licence, $nom, $prenom, $dateNaissance, $taille, $poids, $postePrefere, $statut, $commentaire){
+        $linkpdo = connectPDO();
         try {
-            $reqUpdate = $linkpdo->prepare('update Joueur 
+            $reqUpdate = $linkpdo->prepare('update joueur 
                                                   set nom=:nom,
                                                       prenom=:prenom,
-                                                      photo=:photo,
                                                       dateNaissance=:dateN,
                                                       taille=:taille,
                                                       poids=:poids,
@@ -77,11 +78,10 @@ class Joueur
                                                       statut=:statut,
                                                       commentaire=:commentaire
                                                   where numLicence=:licence');
-            $reqUpdate->execute(array('numLicence' => $licence,
+            $reqUpdate->execute(array('licence' => $licence,
                 'nom' => $nom,
                 'prenom' => $prenom,
-                'photo' => $photo,
-                'dateNaissance' => date('Y-m-d', strtotime($dateNaissance)),
+                'dateN' => date('Y-m-d', strtotime($dateNaissance)),
                 'taille' => $taille,
                 'poids' => $poids,
                 'postePrefere' => $postePrefere,
@@ -95,7 +95,7 @@ class Joueur
 
     public static function deleteJoueur($licence){
         $linkpdo = connectPDO();
-        $reqDelete = $linkpdo->prepare('delete from Joueur where numLicence = :licence');
+        $reqDelete = $linkpdo->prepare('delete from joueur where numLicence = :licence');
         $reqDelete->execute(array('licence'=>$licence));
         if(Joueur::nbJoueurNum($licence)==1){
             return 4; //Joueur non supprimé

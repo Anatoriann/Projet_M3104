@@ -64,7 +64,7 @@ class Match
     public static function selectMatch($idMatch)
     {
         $linkpdo = connectPDO();
-        $reqRecherche = $linkpdo->prepare('select * from matchs where numLicence = :num');
+        $reqRecherche = $linkpdo->prepare('select * from matchs where idMatch = :num');
         $reqRecherche->execute(array('num' => $idMatch));
         return $reqRecherche;
     }
@@ -87,10 +87,35 @@ class Match
 
     public static function addResultat($resAdv, $resLocal, $idMatch){
         $linkpdo = connectPDO();
-        $reqUpdate = $linkpdo->prepare("update `matchs` set `resAdv` = :resAdv, `resLocal`=:resLocal where `idMatch` = :idM");
-        $reqUpdate->execute(array('resAdv' => $resAdv, 'resLocal' => $resLocal, 'idM' => $idMatch));
+        try {
+            $reqUpdate = $linkpdo->prepare("update `matchs` set `resAdv` = :resAdv, `resLocal`=:resLocal where `idMatch` = :idM");
+            $reqUpdate->execute(array('resAdv' => $resAdv, 'resLocal' => $resLocal, 'idM' => $idMatch));
+        } catch(Exception $e){
+            return 13;
+        }
         return 0;
     }
 
     // Fonction modifier statut
+    public static function modifierStatut($idMatch, $statut){
+        $linkpdo = connectPDO();
+        try {
+            $reqUpdate = $linkpdo->prepare("update `matchs` set `statut` = :statut where `idMatch` = :idM");
+            $reqUpdate->execute(array('statut' => $statut, 'idM' => $idMatch));
+        } catch (Exception $e){
+            return 14;
+        }
+        return 0;
+    }
+
+    public static function supprMatch($idMatch){
+        $linkpdo = connectPDO();
+        try {
+            $reqDel = $linkpdo->prepare("DELETE FROM `matchs` WHERE `idMatch` = :idM");
+            $reqDel->execute(array('idM' => $idMatch));
+        } catch(Exception $e){
+            return 15;
+        }
+        return 0;
+    }
 }

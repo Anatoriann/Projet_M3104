@@ -1,5 +1,11 @@
 <?php
 require('session.php');
+require('Classes/Match.php');
+
+if (!empty($_GET['suppr'])) {
+    $res = Match::supprMatch($_GET['suppr']);
+    header("Location: traitement.php?error=$res");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +43,6 @@ require('session.php');
                         <td>Suppression</td>
                     </tr>
                     <?php
-                    require('Classes/Match.php');
                     $matchs = Match::selectMatchs();
                     foreach ($matchs as $m) {
                         if ($m['resLocal']== null){
@@ -52,12 +57,15 @@ require('session.php');
                         switch($m['statut']){
                             case 0 :
                                 $statut = 'Match en préparation';
+                                $lien = 'assigner_joueurs.php';
                                 break;
                             case 1 :
                                 $statut = 'Match prêt à être joué';
+                                $lien = 'ajout_score.php';
                                 break;
                             case 2:
                                 $statut = 'Match fini, score renseigné';
+                                $lien = '#';
                                 break;
                         }
 
@@ -72,17 +80,17 @@ require('session.php');
                         $heureM = date('H:i', strtotime($m['heureM']));
                         ?>
                         <tr class="tableau-affichage-match">
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $dateM; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $heureM; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['nomAdversaire']; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $lieuDeRencontre; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $resLocal; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $resAdv; ?></td>
-                            <td onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"><?php echo $statut; ?></td>
+                            <td onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"><?php echo $dateM; ?></td>
+                            <td onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"><?php echo $heureM; ?></td>
+                            <td onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"><?php echo $m['nomAdversaire']; ?></td>
+                            <td onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"><?php echo $lieuDeRencontre; ?></td>
+                            <td onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"><?php echo $resLocal; ?></td>
+                            <td onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"><?php echo $resAdv; ?></td>
+                            <td onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"><?php echo $statut; ?></td>
                             <td>
-                                <div onclick="window.location='lol.html?idM=<?php echo $m['idMatch'];?>';"></div>
+                                <div onclick="window.location='<?php echo $lien;?>?idM=<?php echo $m['idMatch'];?>';"></div>
                                 <a href="#">
-                                    <button class="delete-btn" onclick="valider_suppression()"><i
+                                    <button class="delete-btn" onclick="valider_suppression(<?php echo $m['idMatch'];?>)"><i
                                                 class="fa fa-trash"></i></button>
                                 </a>
                             </td>
@@ -101,11 +109,12 @@ require('session.php');
 
 
 <script>
-function valider_suppression() {
+function valider_suppression(idM) {
     var txt;
     var r = confirm("Voulez-vous supprimer ce match ?");
+    // A la place de l'alerte, appeler une fonction ou un bail sombre comme ça
     if (r == true) {
-        alert("Match supprimé !");
+        document.location.href="matchs.php?suppr="+idM;
     }
 }
 

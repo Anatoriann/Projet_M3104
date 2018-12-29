@@ -45,6 +45,17 @@ class Erreurs{
             case 12 :
                 $return = 'Match inexistant';
                 break;
+            case 13 :
+                $return = 'Score non mis à jour';
+                break;
+            case 14 :
+                 $return = 'Statut du match non mis à jour';
+                 break;
+            case 15 :
+                $return = 'Match non supprimé';
+                break;
+
+
         }
         return $return;
     }

@@ -437,7 +437,16 @@ input[type=number] {
 
 .player-pinfo {
 	text-align: center;
+}
 
+.player-pinfobutton {
+	display: inline;
+	padding: 0.5em;
+}
+
+.player-contentbutton{
+	text-align: center;
+	padding: 1.5em;
 }
 
 /* --------------------------------------------
