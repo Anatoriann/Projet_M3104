@@ -65,7 +65,7 @@ if (!empty($_GET['suppr'])) {
                                 break;
                             case 2:
                                 $statut = 'Match fini, score renseigné';
-                                $lien = '#';
+                                $lien = 'ajout_notation.php';
                                 break;
                         }
 
