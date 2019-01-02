@@ -54,6 +54,9 @@ class Erreurs{
             case 15 :
                 $return = 'Match non supprimé';
                 break;
+            case 16 :
+                $return = 'Erreur lors de l\'ajout des remplaçants';
+                break;
 
 
         }

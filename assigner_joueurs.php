@@ -1,7 +1,26 @@
 <?php
 require('session.php');
 require('Classes/Joueur.php');
-echo var_dump($_POST);
+require('Classes/participerRemplacant.php');
+if(!empty($_POST['joueur0'])&&!empty($_POST['joueur1'])&&!empty($_POST['joueur2'])&&!empty($_POST['joueur3'])&&!empty($_POST['joueur4'])&& !empty($_POST['remplacant1'])&& !empty($_POST['remplacant2'])&& !empty($_POST['remplacant3'])&& !empty($_POST['remplacant4'])&& !empty($_POST['remplacant5'])){
+    $joueur0 =$_POST['joueur0'];
+    $joueur1 =$_POST['joueur1'];
+    $joueur2 =$_POST['joueur2'];
+    $joueur3 =$_POST['joueur3'];
+    $joueur4 =$_POST['joueur4'];
+
+    $remplacant0 = $_POST['remplacant1'];
+    $remplacant1 = $_POST['remplacant2'];
+    $remplacant2 = $_POST['remplacant3'];
+    $remplacant3 = $_POST['remplacant4'];
+    $remplacant4 = $_POST['remplacant5'];
+
+    if (Joueur::sontDifferent($joueur0,$joueur1,$joueur2,$joueur3, $joueur4, $remplacant0,$remplacant1,$remplacant2,$remplacant3,$remplacant4)){
+        
+        $ret = participerRemplacant::ajouterRemplacant($_POST['remplacant1'], $_POST['remplacant2'], $_POST['remplacant3'], $_POST['remplacant4'], $_POST['remplacant5'], $_POST['idM']);
+    }
+    //echo $ret->debugDumpParams();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +35,7 @@ echo var_dump($_POST);
 <body>
     <?php
 		//require('menu.php');
-        $joueurs = Joueur::selectJoueurs();
+        $joueurs = Joueur::selectJoueursActif();
         $nbjoueurs = $joueurs->rowCount();
 	?>
 
@@ -26,12 +45,13 @@ echo var_dump($_POST);
             <p>Sélectionnez les joueurs que vous voulez assigner à ce match.</p>
 
             <form action="" method="post">
+                <input name="idM" type="hidden"  value="<?php echo $_GET['idM'];?>">
                 <div class="affichage-joueurs-colg">
                     <?php
                     $poste = ["Meneur&nbsp;&nbsp;", "Arrière&emsp;", "Ailier&ensp;&ensp;&ensp;&nbsp;", "Ailier fort", "Pivot&emsp;&ensp;&nbsp;" ];
                     for ($i=0 ; $i < 5 ; $i++){
                         echo "$poste[$i] <select name = \"joueur$i\">";
-                        $joueurs = Joueur::selectJoueurs();
+                        $joueurs = Joueur::selectJoueursActif();
                         for($j = 0; $j < $nbjoueurs; $j++){
                             $joueurEnCours = $joueurs->fetch();
                             $numL = $joueurEnCours['numLicence'];
@@ -46,7 +66,7 @@ echo var_dump($_POST);
                     <?php
                     for ($i=1 ; $i <= 5 ; $i++){
                         echo "Remplaçant $i <select name = \"remplacant$i\">";
-                        $joueurs = Joueur::selectJoueurs();
+                        $joueurs = Joueur::selectJoueursActif();
                         for($j = 0; $j < $nbjoueurs; $j++){
                             $joueurEnCours = $joueurs->fetch();
                             $numL = $joueurEnCours['numLicence'];
@@ -66,121 +86,7 @@ echo var_dump($_POST);
 
         </div>
         <p class="affichage-titre">Liste des joueurs</p>
-        <div class="affichage-joueurs">
-            <div class="affichage-joueurs-colg">
-                <?php
-                $joueurs = Joueur::selectJoueurs();
-                for($i=0; $i < $nbjoueurs/2; $i++) {
-                    $joueurEnCours = $joueurs->fetch();
-                    switch($joueurEnCours['statut']){
-                        case 1 :
-                            $statut = 'Actif';
-                            break;
-                        case 2:
-                            $statut = 'Suspendu';
-                            break;
-                        case 3 :
-                            $statut = 'Blessé';
-                            break;
-                        case 4:
-                            $statut = 'Absent';
-                            break;
-                    }
-
-                    switch ($joueurEnCours['postePrefere']){
-                        case 1 :
-                            $postePrefere = 'Meneur';
-                            break;
-                        case 2:
-                            $postePrefere = 'Arrière';
-                            break;
-                        case 3 :
-                            $postePrefere = 'Ailier';
-                            break;
-                        case 4:
-                            $postePrefere = 'Ailier fort';
-                            break;
-                        case 5:
-                            $postePrefere = 'Pivot';
-                            break;
-                    }
-                    $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
-                    ?>
-                    <div class="affichage-joueur">
-                        <button class="player-accordion">
-                            <div class="player-info"><?php echo $joueurEnCours['prenom']." ".$joueurEnCours['nom'];?></div>
-                            <div class="player-info"><?php echo $postePrefere;?></div>
-                            <div class="player-info"><?php echo $statut;?></div>
-                            <div class="player-info"><?php echo $age." ans";?></div>
-                        </button>
-                        <div class="player-panel">
-                            <p class="player-pinfo"><?php echo $joueurEnCours['poids'].' kg';?></p>
-                            <p class="player-pinfo"><?php echo $joueurEnCours['taille'].' m';?></p>
-                            <p class="player-pinfo"><?php echo $joueurEnCours['commentaire'];?></p>
-                        </div>
-                    </div>
-                    <?php
-                }
-                ?>
-            </div>
-            <div class="affichage-joueurs-cold">
-                <?php
-                for($i=$nbjoueurs/2; $i < $nbjoueurs; $i++) {
-                    $joueurEnCours = $joueurs->fetch();
-                    if($joueurEnCours!=false) {
-                        switch ($joueurEnCours['statut']) {
-                            case 1 :
-                                $statut = 'Actif';
-                                break;
-                            case 2:
-                                $statut = 'Suspendu';
-                                break;
-                            case 3 :
-                                $statut = 'Blessé';
-                                break;
-                            case 4:
-                                $statut = 'Absent';
-                                break;
-                        }
-
-                        switch ($joueurEnCours['postePrefere']) {
-                            case 1 :
-                                $postePrefere = 'Meneur';
-                                break;
-                            case 2:
-                                $postePrefere = 'Arrière';
-                                break;
-                            case 3 :
-                                $postePrefere = 'Ailier';
-                                break;
-                            case 4:
-                                $postePrefere = 'Ailier fort';
-                                break;
-                            case 5:
-                                $postePrefere = 'Pivot';
-                                break;
-                        }
-                        $age = round((time() - strtotime($joueurEnCours['dateNaissance'])) / (3600 * 24 * 365));
-                        ?>
-                        <div class="affichage-joueur">
-                            <button class="player-accordion">
-                                <div class="player-info"><?php echo $joueurEnCours['prenom'] . " " . $joueurEnCours['nom']; ?></div>
-                                <div class="player-info"><?php echo $postePrefere; ?></div>
-                                <div class="player-info"><?php echo $statut; ?></div>
-                                <div class="player-info"><?php echo $age . " ans"; ?></div>
-                            </button>
-                            <div class="player-panel">
-                                <p class="player-pinfo"><?php echo $joueurEnCours['poids'] . ' kg'; ?></p>
-                                <p class="player-pinfo"><?php echo $joueurEnCours['taille'] . ' m'; ?></p>
-                                <p class="player-pinfo"><?php echo $joueurEnCours['commentaire']; ?></p>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                }
-                ?>
-            </div>
-        </div>
+        <?php Joueur::affichageSansModif();?>
 	</div>
 
 	<script>
