@@ -1,7 +1,8 @@
 <?php
-require('session.php');
-require('Classes/Joueur.php');
-require('Classes/participerRemplacant.php');
+require_once('session.php');
+require_once('Classes/Joueur.php');
+require_once('Classes/participerRemplacant.php');
+require_once('Classes/participerTitulaire.php');
 if(!empty($_POST['joueur0'])&&!empty($_POST['joueur1'])&&!empty($_POST['joueur2'])&&!empty($_POST['joueur3'])&&!empty($_POST['joueur4'])&& !empty($_POST['remplacant1'])&& !empty($_POST['remplacant2'])&& !empty($_POST['remplacant3'])&& !empty($_POST['remplacant4'])&& !empty($_POST['remplacant5'])){
     $joueur0 =$_POST['joueur0'];
     $joueur1 =$_POST['joueur1'];
@@ -16,10 +17,22 @@ if(!empty($_POST['joueur0'])&&!empty($_POST['joueur1'])&&!empty($_POST['joueur2'
     $remplacant4 = $_POST['remplacant5'];
 
     if (Joueur::sontDifferent($joueur0,$joueur1,$joueur2,$joueur3, $joueur4, $remplacant0,$remplacant1,$remplacant2,$remplacant3,$remplacant4)){
-        
-        $ret = participerRemplacant::ajouterRemplacant($_POST['remplacant1'], $_POST['remplacant2'], $_POST['remplacant3'], $_POST['remplacant4'], $_POST['remplacant5'], $_POST['idM']);
+
+        $j1 = participerTitulaire::ajouterTitulaire($joueur0, $_POST['idM'],1);
+        $j2 = participerTitulaire::ajouterTitulaire($joueur1, $_POST['idM'],2);
+        $j3 = participerTitulaire::ajouterTitulaire($joueur2, $_POST['idM'],3);
+        $j4 = participerTitulaire::ajouterTitulaire($joueur3, $_POST['idM'],4);
+        $j5 = participerTitulaire::ajouterTitulaire($joueur4, $_POST['idM'],5);
+        if (($j1 == 0) && ($j2 == 0) && ($j3 == 0) && ($j4 == 0) && ($j5 == 0)){
+            $ret = participerRemplacant::ajouterRemplacant($_POST['remplacant1'], $_POST['remplacant2'], $_POST['remplacant3'], $_POST['remplacant4'], $_POST['remplacant5'], $_POST['idM']);
+            Match::modifierStatut($_POST['idM'],1);
+            header("Location: traitement.php?error=$ret");
+        }
+        else {
+            header("Location: traitement.php?error=17");
+        }
+
     }
-    //echo $ret->debugDumpParams();
 }
 ?>
 <!DOCTYPE html>
@@ -34,7 +47,7 @@ if(!empty($_POST['joueur0'])&&!empty($_POST['joueur1'])&&!empty($_POST['joueur2'
 
 <body>
     <?php
-		//require('menu.php');
+		require('menu.php');
         $joueurs = Joueur::selectJoueursActif();
         $nbjoueurs = $joueurs->rowCount();
 	?>

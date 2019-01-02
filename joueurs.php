@@ -20,8 +20,6 @@ if (!empty($_GET['suppr'])) {
 
 	<?php
 		require('menu.php');
-		$joueurs = Joueur::selectJoueurs();
-		$nbjoueurs = $joueurs->rowCount();
 	?>
 
 <div class="content">

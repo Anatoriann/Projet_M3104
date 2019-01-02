@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  mer. 02 jan. 2019 à 17:47
+-- Généré le :  mer. 02 jan. 2019 à 22:50
 -- Version du serveur :  10.3.10-MariaDB-log
 -- Version de PHP :  7.2.11
 
@@ -47,6 +47,7 @@ CREATE TABLE `joueur` (
 
 INSERT INTO `joueur` (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`, `commentaire`) VALUES
 (123, 'Decap', 'Cyril', '', '1997-08-25', 1.68, 95, 1, 1, 'InsÃ©rer un commentaire'),
+(4891, 'Decap', 'MarieNo', '', '1975-07-23', 1.58, 58, 1, 1, 'Une fÃ©minine, youpi !'),
 (22222, 'Daubert', 'Laura', '', '1999-09-22', 1.63, 50, 2, 1, ''),
 (23456, 'Scamper', 'Jugement', '', '1995-09-01', 1.75, 75, 2, 3, 'Notre petite patate rose <3'),
 (123456, 'Fabre', 'Maxime', '', '1999-02-22', 1.7, 35, 5, 1, ''),
@@ -80,7 +81,7 @@ CREATE TABLE `matchs` (
 --
 
 INSERT INTO `matchs` (`idMatch`, `dateM`, `heureM`, `nomAdversaire`, `lieuDeRencontre`, `resAdv`, `resLocal`, `statut`) VALUES
-(9, '2018-12-18', '22:22:00', 'T1', 1, NULL, NULL, 0),
+(9, '2018-12-18', '22:22:00', 'T1', 1, NULL, NULL, 1),
 (10, '1997-08-25', '12:00:00', 'Les idiot', 1, 3, 2, 2),
 (11, '1997-08-25', '03:00:00', 'Bijour', 2, 5, 0, 2),
 (12, '1997-08-25', '12:00:00', 'Bonjour', 1, NULL, NULL, 1);
@@ -103,9 +104,11 @@ CREATE TABLE `participerremplacant` (
 --
 
 INSERT INTO `participerremplacant` (`numLicence`, `idMatch`, `notation`, `commentaire`) VALUES
-(123, 9, NULL, NULL),
+(164845, 9, NULL, NULL),
 (744156, 9, NULL, NULL),
-(1456154, 9, NULL, NULL);
+(1456154, 9, NULL, NULL),
+(1546124, 9, NULL, NULL),
+(2508199, 9, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,6 +123,17 @@ CREATE TABLE `participertitulaire` (
   `notation` tinyint(4) DEFAULT NULL,
   `commentaire` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `participertitulaire`
+--
+
+INSERT INTO `participertitulaire` (`numLicence`, `idMatch`, `posteOccupe`, `notation`, `commentaire`) VALUES
+(123, 9, 1, NULL, NULL),
+(4891, 9, 2, NULL, NULL),
+(22222, 9, 3, NULL, NULL),
+(123456, 9, 4, NULL, NULL),
+(130456, 9, 5, NULL, NULL);
 
 -- --------------------------------------------------------
 

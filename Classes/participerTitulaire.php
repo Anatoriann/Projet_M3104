@@ -5,8 +5,8 @@
  * Date: 19/12/2018
  * Time: 15:15
  */
-require('Joueur.php');
-require('Match.php');
+require_once('Joueur.php');
+require_once('Match.php');
 
 class participerTitulaire
 {
@@ -47,10 +47,19 @@ class participerTitulaire
 
     }
 
+
+
     public static function nbTitulaire($numLicence, $idMatch){
         $linkpdo = connectPDO();
         $reqRech = $linkpdo->prepare("select * from participertitulaire where numLicence = :num and idMatch = :idMatch");
         $reqRech->execute(array('num'=>$numLicence, 'idMatch' => $idMatch));
         return $reqRech->rowCount();
+    }
+
+    public static function joueurDunMatch($idM){
+        $linkpdo = connectPDO();
+        $reqRech = $linkpdo->prepare("SELECT `numLicence`, `idMatch`, `posteOccupe` FROM `participertitulaire` WHERE `idMatch`= :idM");
+        $reqRech->execute(array('idM'=>$idM));
+        return $reqRech;
     }
 }

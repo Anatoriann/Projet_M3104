@@ -57,6 +57,9 @@ class Erreurs{
             case 16 :
                 $return = 'Erreur lors de l\'ajout des remplaçants';
                 break;
+            case 17 :
+                $return = 'Erreur lors de l\'ajout des titulaires';
+                break;
 
 
         }

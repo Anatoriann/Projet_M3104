@@ -1,6 +1,7 @@
 <?php
 require('session.php');
 require('Classes/Match.php');
+require('Classes/Joueur.php');
 
 if (!empty($_GET['idM'])) {
     // Test du bouton retour du traitement qui marche plus ou moins
@@ -45,8 +46,10 @@ require('menu.php');
 
 <div class="content">
 
-
     <div class="formulaire">
+        <p>Composition de l'équipe pour le match (Le mettre en dessous?)</p>
+        <?php Joueur::affichageMatch($_GET['idM']);?>
+
         <p>Saisissez le score relatif au match.</p>
 
 
@@ -72,6 +75,25 @@ require('menu.php');
 
     </div>
 </div>
+
+<script>
+
+    var acc = document.getElementsByClassName("player-accordion");
+
+
+    var i;
+
+    for (i=0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

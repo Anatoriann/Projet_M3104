@@ -7,6 +7,8 @@
  */
 
 require_once('connectPDO.php');
+require_once('participerTitulaire.php');
+require_once('participerRemplacant.php');
 
 class Joueur
 {
@@ -68,7 +70,7 @@ class Joueur
     public static function selectJoueur($numLicence)
     {
         $linkpdo = connectPDO();
-        $reqRecherche = $linkpdo->prepare('select * from Joueur where numLicence = :num');
+        $reqRecherche = $linkpdo->prepare('select * from Joueur where `numLicence` = :num');
         $reqRecherche->execute(array('num' => $numLicence));
         return $reqRecherche;
     }
@@ -190,9 +192,7 @@ class Joueur
                 }
             echo '</div>';
             echo "<div class=\"affichage-joueurs-cold\">";
-                $joueurs = Joueur::selectJoueursActif();
-                $nbjoueurs = $joueurs->rowCount();
-                for($i=$nbjoueurs/2; $i < $nbjoueurs; $i++) {
+                for($i; $i < $nbjoueurs; $i++) {
                     $joueurEnCours = $joueurs->fetch();
                     $statut = Joueur::assignerStatut($joueurEnCours['statut']);
                     $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
@@ -219,7 +219,7 @@ class Joueur
     public static function affichageAvecModif(){
         echo "<div class=\"affichage-joueurs\">";
         echo "<div class=\"affichage-joueurs-colg\">";
-        $joueurs = Joueur::selectJoueursActif();
+        $joueurs = Joueur::selectJoueurs();
         $nbjoueurs = $joueurs->rowCount();
         for($i=0; $i < $nbjoueurs/2; $i++) {
             $joueurEnCours = $joueurs->fetch();
@@ -257,9 +257,7 @@ class Joueur
         }
         echo '</div>';
         echo "<div class=\"affichage-joueurs-cold\">";
-        $joueurs = Joueur::selectJoueursActif();
-        $nbjoueurs = $joueurs->rowCount();
-        for($i=$nbjoueurs/2; $i < $nbjoueurs; $i++) {
+        for($i; $i < $nbjoueurs; $i++) {
             $joueurEnCours = $joueurs->fetch();
             $statut = Joueur::assignerStatut($joueurEnCours['statut']);
             $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
@@ -278,7 +276,7 @@ class Joueur
                             <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
                             <div class=\"player-contentbutton\">
                                 <div class=\"player-pinfobutton\">
-                                    <a href=\"modif_joueur.php?numLicence=".$joueurEnCours['numLicence']." class=\"edit-btn\"><i class=\"fa fa-edit\"></i></a>
+                                    <a href=\"modif_joueur.php?numLicence=".$joueurEnCours['numLicence']."\" class=\"edit-btn\"><i class=\"fa fa-edit\"></i></a>
                                 </div>
                                 <div class=\"player-pinfobutton\">
                                     <a href=\"#\" class=\"delete-btn\" onclick=\"valider_suppression(".$joueurEnCours['numLicence'].")\">
@@ -288,6 +286,65 @@ class Joueur
                             </div>
                         </div>
                     </div>";
+        }
+        echo '</div>';
+        echo '</div>';
+    }
+
+    public static function affichageMatch($idMatch){
+        echo "<div class=\"affichage-joueurs\">";
+        echo "<div class=\"affichage-joueurs-colg\">";
+        $joueurs = participerTitulaire::joueurDunMatch($idMatch);
+        $nbjoueurs = $joueurs->rowCount();
+        for($i=0; $i < $nbjoueurs; $i++) {
+            $joueurEnCour = $joueurs->fetch();
+            $joueurEnCours = Joueur::selectJoueur($joueurEnCour['numLicence']);
+            $joueurEnCours = $joueurEnCours->fetch();
+            $statut = Joueur::assignerStatut($joueurEnCours['statut']);
+            $postePrefere= Joueur::assignerPoste($joueurEnCour['posteOccupe']);
+            $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+
+            echo "<div class=\"affichage-joueur\">
+                <button class=\"player-accordion\">
+                    <div class=\"player-info\">".$joueurEnCours['prenom'].' '.$joueurEnCours['nom']."</div>
+                    <div class=\"player-info\">".$postePrefere."</div>
+                    <div class=\"player-info\">".$statut."</div>
+                    <div class=\"player-info\">".$age." ans</div>
+                </button>
+                <div class=\"player-panel\">
+                    <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
+                    <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
+                    <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
+                </div>
+            </div>";
+            // Ligne du modif d'origine
+            //<a href=\"modif_joueur.php?numLicence=<?php echo $joueurEnCours['numLicence'];\" class=\"edit-btn\"><i class=\"fa fa-edit\"></i></a>
+        }
+        echo '</div>';
+        echo "<div class=\"affichage-joueurs-cold\">";
+        $joueurs = participerRemplacant::remplacantDunMatch($idMatch);
+        $nbjoueurs = $joueurs->rowCount();
+        for($i=0; $i < $nbjoueurs; $i++) {
+            $joueurEnCour = $joueurs->fetch();
+            $joueurEnCours = Joueur::selectJoueur($joueurEnCour['numLicence']);
+            $joueurEnCours = $joueurEnCours->fetch();
+            $statut = Joueur::assignerStatut($joueurEnCours['statut']);
+            $postePrefere= 'Remplaçant';
+            $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+
+            echo "<div class=\"affichage-joueur\">
+                <button class=\"player-accordion\">
+                    <div class=\"player-info\">".$joueurEnCours['prenom']." ".$joueurEnCours['nom']."</div>
+                    <div class=\"player-info\">".$postePrefere."</div>
+                    <div class=\"player-info\">".$statut."</div>
+                    <div class=\"player-info\">".$age." ans</div>
+                </button>
+                <div class=\"player-panel\">
+                    <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
+                    <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
+                    <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
+                </div>
+            </div>";
         }
         echo '</div>';
         echo '</div>';

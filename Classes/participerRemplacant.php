@@ -26,4 +26,11 @@ class participerRemplacant
         return 0;
     }
 
+    public static function remplacantDunMatch($idM){
+        $linkpdo = connectPDO();
+        $reqRech = $linkpdo->prepare("SELECT `numLicence`, `idMatch` FROM `participerremplacant` WHERE `idMatch`= :idM");
+        $reqRech->execute(array('idM'=>$idM));
+        return $reqRech;
+    }
+
 }
