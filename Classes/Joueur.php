@@ -349,4 +349,160 @@ class Joueur
         echo '</div>';
         echo '</div>';
     }
+
+    public static function affichageStatistique(){
+        echo "<div class=\"affichage-joueurs\">";
+        echo "<div class=\"affichage-joueurs-colg\">";
+        $joueurs = Joueur::selectJoueurs();
+        $nbjoueurs = $joueurs->rowCount();
+        for($i=0; $i < $nbjoueurs/2; $i++) {
+            $joueurEnCours = $joueurs->fetch();
+            $statut = Joueur::assignerStatut($joueurEnCours['statut']);
+            $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
+            $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+
+            echo "<div class=\"affichage-joueur\">
+                <button class=\"player-accordion\">
+                    <div class=\"player-info\">".$joueurEnCours['prenom'].' '.$joueurEnCours['nom']."</div>
+                    <div class=\"player-info\">".$postePrefere."</div>
+                    <div class=\"player-info\">".$statut."</div>
+                    <div class=\"player-info\">".$age." ans</div>
+                </button>
+                <div class=\"player-panel\">";
+            $matchTitulaire = participerTitulaire::matchDunJoueur($joueurEnCours['numLicence']);
+            $nbMatchTitulaire = $matchTitulaire->rowCount();
+            $noteGlobale = 0;
+            $nbMatch = 0;
+            $nbSelection = 0;
+            $nbVictoire = 0;
+            $nbMatchNote = 0;
+            if ($nbMatchTitulaire>0){
+                for($k =0 ; $k<$nbMatchTitulaire; $k++){
+                    $match = $matchTitulaire->fetch();
+                    if(Match::estGagne($match['idMatch'])==1){
+                        $nbVictoire++;
+                    }
+                    if (!empty($match['notation'])) {
+                        $noteGlobale += $match['notation'];
+                        $nbMatchNote++;
+                    }
+                    $nbSelection++;
+                    $nbMatch++;
+                }
+            }
+            echo "<h6> Nombre de sélections en tant que titulaire : ".$nbSelection."</h6>";
+            $nbSelection = 0;
+            $matchRemplacant = participerRemplacant::matchDunJoueur($joueurEnCours['numLicence']);
+            $nbMatchRemplacant = $matchRemplacant->rowCount();
+            if ($nbMatchRemplacant>0){
+                for($k =0 ; $k<$nbMatchRemplacant; $k++){
+                    $match = $matchRemplacant->fetch();
+                    if(Match::estGagne($match['idMatch'])==1){
+                        $nbVictoire++;
+                    }
+                    if (!empty($match['notation'])) {
+                        $noteGlobale += $match['notation'];
+                        $nbMatchNote++;
+                    }
+                    $nbSelection++;
+                    $nbMatch++;
+                }
+            }
+            echo "<h6> Nombre de sélections en tant que remplaçant : ".$nbSelection."</h6>";
+            if($noteGlobale>0 && $nbMatchNote !=0){
+                echo "<h6> Note globale : ".($noteGlobale/$nbMatchNote)."</h6>";
+            }
+            else{
+                echo "<h6>Joueur jamais noté</h6>";
+            }
+            if($nbMatch != 0) {
+                echo "<h6>Pourcentage de matchs gagnés : " . ($nbVictoire / $nbMatch * 100) . "%";
+            }
+            else{
+                echo "<h6>Le joueur n'a joué aucun match</h6>";
+            }
+
+                echo "
+                </div>
+            </div>";
+            // Ligne du modif d'origine
+            //<a href=\"modif_joueur.php?numLicence=<?php echo $joueurEnCours['numLicence'];\" class=\"edit-btn\"><i class=\"fa fa-edit\"></i></a>
+        }
+        echo '</div>';
+        echo "<div class=\"affichage-joueurs-cold\">";
+        for($i; $i < $nbjoueurs; $i++) {
+            $joueurEnCours = $joueurs->fetch();
+            $statut = Joueur::assignerStatut($joueurEnCours['statut']);
+            $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
+            $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+
+            echo "<div class=\"affichage-joueur\">
+                <button class=\"player-accordion\">
+                    <div class=\"player-info\">".$joueurEnCours['prenom']." ".$joueurEnCours['nom']."</div>
+                    <div class=\"player-info\">".$postePrefere."</div>
+                    <div class=\"player-info\">".$statut."</div>
+                    <div class=\"player-info\">".$age." ans</div>
+                </button>
+                <div class=\"player-panel\">";
+                $matchTitulaire = participerTitulaire::matchDunJoueur($joueurEnCours['numLicence']);
+                $nbMatchTitulaire = $matchTitulaire->rowCount();
+                $noteGlobale = 0;
+                $nbMatch = 0;
+                $nbMatchNote = 0;
+                $nbSelection = 0;
+                $nbVictoire = 0;
+                if ($nbMatchTitulaire>0){
+                    for($k =0 ; $k<$nbMatchTitulaire; $k++){
+                        $match = $matchTitulaire->fetch();
+                        if(Match::estGagne($match['idMatch'])==1){
+                            $nbVictoire++;
+                        }
+                        if (!empty($match['notation'])) {
+                            $noteGlobale += $match['notation'];
+                            $nbMatchNote++;
+                        }
+                        $nbSelection++;
+                        $nbMatch++;
+                    }
+                }
+                echo "<h6> Nombre de sélections en tant que titulaire : ".$nbSelection."</h6>";
+                $nbSelection = 0;
+                $matchRemplacant = participerRemplacant::matchDunJoueur($joueurEnCours['numLicence']);
+                $nbMatchRemplacant = $matchRemplacant->rowCount();
+                if ($nbMatchRemplacant>0){
+                    for($k =0 ; $k<$nbMatchRemplacant; $k++){
+                        $match = $matchRemplacant->fetch();
+                        if(Match::estGagne($match['idMatch'])==1){
+                            $nbVictoire++;
+                        }
+                        if (!empty($match['notation'])) {
+                            $noteGlobale += $match['notation'];
+                            $nbMatchNote++;
+                        }
+                        $nbSelection++;
+                        $nbMatch++;
+                    }
+                }
+                echo "<h6> Nombre de sélections en tant que remplaçant : ".$nbSelection."</h6>";
+            if($noteGlobale>0 && $nbMatchNote !=0){
+                echo "<h6> Note globale : ".($noteGlobale/$nbMatchNote)."</h6>";
+            }
+            else{
+                echo "<h6>Joueur jamais noté</h6>";
+            }
+            if($nbMatch != 0) {
+                echo "<h6>Pourcentage de matchs gagnés : " . ($nbVictoire / $nbMatch * 100) . "%";
+            }
+            else{
+                echo "<h6>Le joueur n'a joué aucun match</h6>";
+            }
+
+
+                echo "
+                </div>
+            </div>";
+        }
+        echo '</div>';
+        echo '</div>';
+    }
 }

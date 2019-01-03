@@ -85,7 +85,7 @@ class Match
         return 0;
     }
 
-    public static function addResultat($resAdv, $resLocal, $idMatch){
+    public static function addResultat($resLocal, $resAdv, $idMatch){
         $linkpdo = connectPDO();
         try {
             $reqUpdate = $linkpdo->prepare("update `matchs` set `resAdv` = :resAdv, `resLocal`=:resLocal where `idMatch` = :idM");
@@ -117,5 +117,27 @@ class Match
             return 15;
         }
         return 0;
+    }
+
+    public static function estGagne($idM){
+        $linkpdo = connectPDO();
+        $reqRech = $linkpdo->prepare("SELECT * FROM `matchs` WHERE `idMatch` = :idM");
+        $reqRech->execute(array('idM'=>$idM));
+        $m = $reqRech->fetch();
+        if ($m['resAdv']<$m['resLocal']){
+            return 1;
+        }
+        elseif ($m['resAdv']==$m['resLocal']){
+            return 0;
+        }
+        else{
+            return -1;
+        }
+    }
+
+    public static function selectMatchFinis(){
+        $linkpdo = connectPDO();
+        $req = $linkpdo->query("SELECT * FROM `matchs` WHERE `statut` = 2");
+        return $req;
     }
 }

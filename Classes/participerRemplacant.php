@@ -39,4 +39,11 @@ class participerRemplacant
         $reqUpdate->execute(array('note' => $note, 'commentaire' => $commentaire, 'licence' => $licence, 'idM' => $idM));
     }
 
+    public static function matchDunJoueur($licence){
+        $linkpdo = connectPDO();
+        $reqRech = $linkpdo->prepare("SELECT * FROM `participerremplacant` WHERE `numLicence`=:num");
+        $reqRech->execute(array('num'=>$licence));
+        return $reqRech;
+    }
+
 }

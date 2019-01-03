@@ -5,7 +5,7 @@ require('session.php');
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Accueil</title>
+	<title>Statistiques</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta charset="utf-8">
 </head>
@@ -13,6 +13,25 @@ require('session.php');
 <body>
 		<?php
 		require('menu.php');
+		require_once('Classes/Joueur.php');
+		require_once('Classes/Match.php');
+        $m = Match::selectMatchFinis();
+        $win = 0;
+        $loose = 0;
+        $equ = 0;
+        while($mCours = $m->fetch()){
+            switch (Match::estGagne($mCours['idMatch'])) {
+                case 1 :
+                    $win++;
+                    break;
+                case 0 :
+                    $equ++;
+                    break;
+                case -1:
+                    $loose++;
+                    break;
+            }
+        }
 		 ?>
 
 
@@ -25,46 +44,14 @@ require('session.php');
       <!-- Tab content -->
         <div id='Joueurs' class="tabcontent">
           <p class="tabtitle">Statistiques des joueurs</p>
-
-
-
-					<div class="affichage-joueurs-colg">
-							<div class="affichage-joueur">
-											<button class="player-accordion">
-														<div class="player-info">Jordan Clarkson</div>
-														<div class="player-info">PG</div>
-														<div class="player-info">Suspendu</div>
-														<div class="player-info">28 ans</div>
-											</button>
-											<div class="player-panel">
-														<p class="player-pinfo">Performance 1 </p>
-														<p class="player-pinfo">Performance 2 </p>
-														<p class="player-pinfo">Performance 3 </p>
-											</div>
-						</div>
-				</div>
-
-				<div class="affichage-joueurs-cold">
-						<div class="affichage-joueur">
-										<button class="player-accordion">
-													<div class="player-info">Jordan Clarkson</div>
-													<div class="player-info">PG</div>
-													<div class="player-info">Suspendu</div>
-													<div class="player-info">28 ans</div>
-										</button>
-										<div class="player-panel">
-													<p class="player-pinfo">Performance 1 </p>
-													<p class="player-pinfo">Performance 2 </p>
-													<p class="player-pinfo">Performance 3 </p>
-										</div>
-					</div>
-			</div>
+            <?php Joueur::affichageStatistique();?>
         </div>
 
         <div id='Matchs' class="tabcontent">
           <p class="tabtitle">Statistiques des matchs</p>
-          <p class="tabtext">Nombre de matchs gagnés : </p>
-					<p class="tabtext">Nombre de matchs perdus : </p>
+          <p class="tabtext">Nombre de matchs gagnés : <?php echo $win;?></p>
+          <p class="tabtext">Nombre de matchs perdus : <?php echo $loose;?> </p>
+          <p class="tabtext">Nombre de matchs nuls : <?php echo $equ;?></p>
         </div>
 
 		</div>

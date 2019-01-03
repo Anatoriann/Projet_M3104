@@ -23,7 +23,7 @@ if (!empty($_POST['joueur0'])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Création de match</title>
+    <title>Notation des joueurs</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
 </head>

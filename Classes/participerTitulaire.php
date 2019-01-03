@@ -68,4 +68,11 @@ class participerTitulaire
         $reqUpdate = $linkpdo->prepare("UPDATE `participertitulaire` SET `notation`=:note,`commentaire`=:commentaire WHERE `numLicence` = :licence AND`idMatch`= :idM");
         $reqUpdate->execute(array('note' => $note, 'commentaire' => $commentaire, 'licence' => $licence, 'idM' => $idM));
     }
+
+    public static function matchDunJoueur($licence){
+        $linkpdo = connectPDO();
+        $reqRech = $linkpdo->prepare("SELECT * FROM `participertitulaire` WHERE `numLicence`=:num");
+        $reqRech->execute(array('num'=>$licence));
+        return $reqRech;
+    }
 }
