@@ -58,8 +58,14 @@ class participerTitulaire
 
     public static function joueurDunMatch($idM){
         $linkpdo = connectPDO();
-        $reqRech = $linkpdo->prepare("SELECT `numLicence`, `idMatch`, `posteOccupe` FROM `participertitulaire` WHERE `idMatch`= :idM");
+        $reqRech = $linkpdo->prepare("SELECT * FROM `participertitulaire` WHERE `idMatch`= :idM");
         $reqRech->execute(array('idM'=>$idM));
         return $reqRech;
+    }
+
+    public static function notation($idM, $licence, $note, $commentaire){
+        $linkpdo = connectPDO();
+        $reqUpdate = $linkpdo->prepare("UPDATE `participertitulaire` SET `notation`=:note,`commentaire`=:commentaire WHERE `numLicence` = :licence AND`idMatch`= :idM");
+        $reqUpdate->execute(array('note' => $note, 'commentaire' => $commentaire, 'licence' => $licence, 'idM' => $idM));
     }
 }

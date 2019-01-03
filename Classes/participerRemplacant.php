@@ -28,9 +28,15 @@ class participerRemplacant
 
     public static function remplacantDunMatch($idM){
         $linkpdo = connectPDO();
-        $reqRech = $linkpdo->prepare("SELECT `numLicence`, `idMatch` FROM `participerremplacant` WHERE `idMatch`= :idM");
+        $reqRech = $linkpdo->prepare("SELECT * FROM `participerremplacant` WHERE `idMatch`= :idM");
         $reqRech->execute(array('idM'=>$idM));
         return $reqRech;
+    }
+
+    public static function notation($idM, $licence, $note, $commentaire){
+        $linkpdo = connectPDO();
+        $reqUpdate = $linkpdo->prepare("UPDATE `participerremplacant` SET `notation`=:note,`commentaire`=:commentaire WHERE `numLicence` = :licence AND`idMatch`= :idM");
+        $reqUpdate->execute(array('note' => $note, 'commentaire' => $commentaire, 'licence' => $licence, 'idM' => $idM));
     }
 
 }

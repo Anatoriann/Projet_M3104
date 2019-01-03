@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  mer. 02 jan. 2019 à 22:50
+-- Généré le :  jeu. 03 jan. 2019 à 13:00
 -- Version du serveur :  10.3.10-MariaDB-log
 -- Version de PHP :  7.2.11
 
@@ -84,7 +84,7 @@ INSERT INTO `matchs` (`idMatch`, `dateM`, `heureM`, `nomAdversaire`, `lieuDeRenc
 (9, '2018-12-18', '22:22:00', 'T1', 1, NULL, NULL, 1),
 (10, '1997-08-25', '12:00:00', 'Les idiot', 1, 3, 2, 2),
 (11, '1997-08-25', '03:00:00', 'Bijour', 2, 5, 0, 2),
-(12, '1997-08-25', '12:00:00', 'Bonjour', 1, NULL, NULL, 1);
+(12, '1997-08-25', '12:00:00', 'Bonjour', 1, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
