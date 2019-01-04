@@ -5,5 +5,5 @@
     $login = 'root';
     $mdp = '$iutinfo';
 
-   // $mdp = '';
+    //$mdp = '';
 ?>

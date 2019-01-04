@@ -282,9 +282,11 @@ input[type=number] {
     padding: 16px 40px;
     text-decoration: none;
     cursor: pointer;
-	position : absolute;
-	bottom : 3em;
-	right : 4em;
+    display: block;
+    text-align: center;
+    margin-top: 2em;
+    float: right;
+    margin-right: 3.5em;
 }
 
 .bouton_creation:hover {

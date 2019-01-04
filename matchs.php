@@ -28,8 +28,6 @@ if (!empty($_GET['suppr'])) {
 		<div class="affichage_matchs">
 			<p class="affichage-titre">Liste des matchs </p>
 
-			<a href="creation_match.php" class="bouton_creation"> Nouveau match </a>
-
 			<div class="tableau_affichage">
 				<table>
                     <tr class="tableau-affichage-match">
@@ -102,7 +100,11 @@ if (!empty($_GET['suppr'])) {
 
 
 				</table>
+
+
 			</div>
+
+            <a href="creation_match.php" class="bouton_creation"> Nouveau match </a>
 		</div>
 
 	</div>
