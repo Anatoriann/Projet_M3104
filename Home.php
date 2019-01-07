@@ -18,8 +18,8 @@ require('session.php');
 		<div class="content">
 
 
-			<div class="match-prevu">
-				<p> Prochain match prévu </p>
+			<div class="match-prevu" style="text-align: center;">
+				<p> Bienvenue dans votre utilitaire de gestion d'équipe, <?php echo $_SESSION['pseudo'] ?> ! </p>
 			</div>
 
 			<div class="redirection-accueil">
