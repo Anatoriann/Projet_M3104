@@ -2,10 +2,15 @@
 require('session.php');
 require('Classes/Joueur.php');
 if (!empty($_POST['num_licence'])){
-	$file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-	$_FILES['image']['name'] = $_POST['num_licence'];
-	$path = 'photos_m3104/' .  $_POST['num_licence'] . ".$file_ext";
-    move_uploaded_file($_FILES['image']['tmp_name'], $path);
+    if(!empty($_FILES)) {
+        $file_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
+        $_FILES['image']['name'] = $_POST['num_licence'];
+        $path = 'photos_m3104/' . $_POST['num_licence'] . ".$file_ext";
+        move_uploaded_file($_FILES['image']['tmp_name'], $path);
+    }
+    else{
+        $path='photos_m3104/default.jpg';
+    }
 	
     $res = Joueur::addJoueur($_POST['num_licence'],$_POST['nom'],$_POST['prenom'],$path,$_POST['dateN'], $_POST['taille'],$_POST['poids'],$_POST['postePrefere'],$_POST['statut'],$_POST['commentaire']);
     header("Location: traitement.php?error=$res");
