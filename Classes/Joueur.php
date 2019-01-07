@@ -182,6 +182,12 @@ class Joueur
                     $statut = Joueur::assignerStatut($joueurEnCours['statut']);
                     $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
                     $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+                    if($joueurEnCours['photo']==''){
+                        $path = $path='photos_m3104/default.jpg';
+                    }
+                    else {
+                        $path = $joueurEnCours['photo'];
+                    }
 
                     echo "<div class=\"affichage-joueur\">
                         <button class=\"player-accordion\">
@@ -191,6 +197,7 @@ class Joueur
                             <div class=\"player-info\">".$age." ans</div>
                         </button>
                         <div class=\"player-panel\">
+                        <img class=\"player-img\" src=\"".$path."\">
                             <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
@@ -204,6 +211,12 @@ class Joueur
                     $statut = Joueur::assignerStatut($joueurEnCours['statut']);
                     $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
                     $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+                    if($joueurEnCours['photo']==''){
+                        $path = $path='photos_m3104/default.jpg';
+                    }
+                    else {
+                        $path = $joueurEnCours['photo'];
+                    }
 
                     echo "<div class=\"affichage-joueur\">
                         <button class=\"player-accordion\">
@@ -213,6 +226,7 @@ class Joueur
                             <div class=\"player-info\">".$age." ans</div>
                         </button>
                         <div class=\"player-panel\">
+                        <img class=\"player-img\" src=\"".$path."\">
                             <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
@@ -233,6 +247,12 @@ class Joueur
             $statut = Joueur::assignerStatut($joueurEnCours['statut']);
             $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
             $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+            if($joueurEnCours['photo']==''){
+                $path = $path='photos_m3104/default.jpg';
+            }
+            else {
+                $path = $joueurEnCours['photo'];
+            }
 
             echo "<div class=\"affichage-joueur\">
                         <button class=\"player-accordion\">
@@ -242,7 +262,7 @@ class Joueur
                             <div class=\"player-info\">".$age." ans</div>
                         </button>
                         <div class=\"player-panel\">
-                        	<img class=\"player-img\" src=\"".$joueurEnCours['photo']."\">
+                        	<img class=\"player-img\" src=\"".$path."\">
                             <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p> <br/>
                             <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p> <br/>
                             <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p> <br/>
@@ -270,6 +290,12 @@ class Joueur
             $statut = Joueur::assignerStatut($joueurEnCours['statut']);
             $postePrefere= Joueur::assignerPoste($joueurEnCours['postePrefere']);
             $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+            if($joueurEnCours['photo']==''){
+                $path = $path='photos_m3104/default.jpg';
+            }
+            else {
+                $path = $joueurEnCours['photo'];
+            }
 
             echo "<div class=\"affichage-joueur\">
                         <button class=\"player-accordion\">
@@ -279,6 +305,7 @@ class Joueur
                             <div class=\"player-info\">".$age." ans</div>
                         </button>
                         <div class=\"player-panel\">
+                            <img class=\"player-img\" src=\"".$path."\">
                             <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
@@ -311,6 +338,12 @@ class Joueur
             $statut = Joueur::assignerStatut($joueurEnCours['statut']);
             $postePrefere= Joueur::assignerPoste($joueurEnCour['posteOccupe']);
             $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+            if($joueurEnCours['photo']==''){
+                $path = $path='photos_m3104/default.jpg';
+            }
+            else {
+                $path = $joueurEnCours['photo'];
+            }
 
             echo "<div class=\"affichage-joueur\">
                 <button class=\"player-accordion\">
@@ -320,6 +353,7 @@ class Joueur
                     <div class=\"player-info\">".$age." ans</div>
                 </button>
                 <div class=\"player-panel\">
+                <img class=\"player-img\" src=\"".$path."\">
                     <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
                     <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
                     <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
@@ -339,6 +373,12 @@ class Joueur
             $statut = Joueur::assignerStatut($joueurEnCours['statut']);
             $postePrefere= 'Remplaçant';
             $age = round((time()-strtotime($joueurEnCours['dateNaissance']))/(3600*24*365));
+            if($joueurEnCours['photo']==''){
+                $path = $path='photos_m3104/default.jpg';
+            }
+            else {
+                $path = $joueurEnCours['photo'];
+            }
 
             echo "<div class=\"affichage-joueur\">
                 <button class=\"player-accordion\">
@@ -348,6 +388,7 @@ class Joueur
                     <div class=\"player-info\">".$age." ans</div>
                 </button>
                 <div class=\"player-panel\">
+                <img class=\"player-img\" src=\"".$path."\">
                     <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
                     <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
                     <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>

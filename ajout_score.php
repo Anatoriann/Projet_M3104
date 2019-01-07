@@ -47,7 +47,7 @@ require('menu.php');
 <div class="content">
 
     <div class="formulaire">
-        <p>Composition de l'équipe pour le match (Le mettre en dessous?)</p>
+        <p>Composition de l'équipe pour le match</p>
         <?php Joueur::affichageMatch($_GET['idM']);?>
 
         <p>Saisissez le score relatif au match.</p>
