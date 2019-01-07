@@ -243,9 +243,9 @@ class Joueur
                         </button>
                         <div class=\"player-panel\">
                         	<img class=\"player-img\" src=\"".$joueurEnCours['photo']."\">
-                            <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
-                            <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
-                            <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
+                            <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p> <br/>
+                            <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p> <br/>
+                            <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p> <br/>
                             <div class=\"player-contentbutton\">
                                 <div class=\"player-pinfobutton\">
                                     <a href=\"modif_joueur.php?numLicence=".$joueurEnCours['numLicence']."\" class=\"edit-btn\">

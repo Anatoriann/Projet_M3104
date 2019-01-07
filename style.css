@@ -407,6 +407,22 @@ input[type=number] {
 	padding: 0.5em;
 }
 
+.player-img {
+	margin-top : 0.4em;
+	float: left;
+	display: inline-block;
+	margin-left: 0;
+	width : 12em;
+	height : 12em;
+
+}
+
+.player-pinfo {
+	margin-left: 2em;
+	display: inline-block;
+	width: 10em;
+}
+
 .player-panel {
 	height : auto;
 	width: auto;
@@ -437,9 +453,7 @@ input[type=number] {
 	color : #f4b042!important;
 }
 
-.player-pinfo {
-	text-align: center;
-}
+
 
 .player-pinfobutton {
 	display: inline;
