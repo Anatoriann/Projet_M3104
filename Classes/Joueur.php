@@ -237,6 +237,7 @@ class Joueur
                             <div class=\"player-info\">".$age." ans</div>
                         </button>
                         <div class=\"player-panel\">
+                        	<img class=\"player-img\" src=\"".$joueurEnCours['photo']."\">
                             <p class=\"player-pinfo\">".$joueurEnCours['poids'].' kg'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['taille'].' m'."</p>
                             <p class=\"player-pinfo\">".$joueurEnCours['commentaire']."</p>
