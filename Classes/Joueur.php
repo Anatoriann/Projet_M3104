@@ -21,7 +21,7 @@ class Joueur
         if ($res > 0) {
             return 1; // Erreur 1 : Le joueur est déjà présent
         } else {
-            $reqInsert = $linkpdo->prepare("insert into Joueur (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`, `commentaire`) VALUES (:numLicence, :nom, :prenom, :photo, :dateNaissance, :taille, :poids, :postePrefere, :statut, :commentaire)");
+            $reqInsert = $linkpdo->prepare("insert into joueur (`numLicence`, `nom`, `prenom`, `photo`, `dateNaissance`, `taille`, `poids`, `postePrefere`, `statut`, `commentaire`) VALUES (:numLicence, :nom, :prenom, :photo, :dateNaissance, :taille, :poids, :postePrefere, :statut, :commentaire)");
             $reqInsert->execute(array('numLicence' => $licence,
                 'nom' => $nom,
                 'prenom' => $prenom,
@@ -46,7 +46,7 @@ class Joueur
     public static function nbJoueurNum($licence)
     {
         $linkpdo = connectPDO();
-        $reqRecherche = $linkpdo->prepare('select * from Joueur where numLicence= :licence');
+        $reqRecherche = $linkpdo->prepare('select * from joueur where numLicence= :licence');
         $reqRecherche->execute(array('licence' => $licence));
         return $reqRecherche->rowCount();
     }
@@ -54,7 +54,7 @@ class Joueur
     public static function selectJoueurs()
     {
         $linkpdo = connectPDO();
-        $reqRecherche = $linkpdo->prepare('select * from Joueur');
+        $reqRecherche = $linkpdo->prepare('select * from joueur');
         $reqRecherche->execute();
         return $reqRecherche;
     }
@@ -62,7 +62,7 @@ class Joueur
     public static function selectJoueursActif()
     {
         $linkpdo = connectPDO();
-        $reqRecherche = $linkpdo->prepare('select * from Joueur where `statut` = 1');
+        $reqRecherche = $linkpdo->prepare('select * from joueur where `statut` = 1');
         $reqRecherche->execute();
         return $reqRecherche;
     }
@@ -70,7 +70,7 @@ class Joueur
     public static function selectJoueur($numLicence)
     {
         $linkpdo = connectPDO();
-        $reqRecherche = $linkpdo->prepare('select * from Joueur where `numLicence` = :num');
+        $reqRecherche = $linkpdo->prepare('select * from joueur where `numLicence` = :num');
         $reqRecherche->execute(array('num' => $numLicence));
         return $reqRecherche;
     }
@@ -379,15 +379,19 @@ class Joueur
             if ($nbMatchTitulaire>0){
                 for($k =0 ; $k<$nbMatchTitulaire; $k++){
                     $match = $matchTitulaire->fetch();
-                    if(Match::estGagne($match['idMatch'])==1){
-                        $nbVictoire++;
+                    $matchEnCours = Match::selectMatch($match['idMatch']);
+                    $matchEnCours = $matchEnCours->fetch();
+                    if($matchEnCours['statut']==2){
+		            if(Match::estGagne($match['idMatch'])==1){
+		                $nbVictoire++;
+		            }
+		            if (!empty($match['notation'])) {
+		                $noteGlobale += $match['notation'];
+		                $nbMatchNote++;
+		            }
+		            $nbSelection++;
+		            $nbMatch++;
                     }
-                    if (!empty($match['notation'])) {
-                        $noteGlobale += $match['notation'];
-                        $nbMatchNote++;
-                    }
-                    $nbSelection++;
-                    $nbMatch++;
                 }
             }
             echo "<h6> Nombre de sélections en tant que titulaire : ".$nbSelection."</h6>";
@@ -397,15 +401,19 @@ class Joueur
             if ($nbMatchRemplacant>0){
                 for($k =0 ; $k<$nbMatchRemplacant; $k++){
                     $match = $matchRemplacant->fetch();
-                    if(Match::estGagne($match['idMatch'])==1){
-                        $nbVictoire++;
-                    }
-                    if (!empty($match['notation'])) {
-                        $noteGlobale += $match['notation'];
-                        $nbMatchNote++;
-                    }
-                    $nbSelection++;
-                    $nbMatch++;
+                    $matchEnCours = Match::selectMatch($match['idMatch']);
+                    $matchEnCours = $matchEnCours->fetch();
+                    if($matchEnCours['statut']==2){
+		            if(Match::estGagne($match['idMatch'])==1){
+		                $nbVictoire++;
+		            }
+		            if (!empty($match['notation'])) {
+		                $noteGlobale += $match['notation'];
+		                $nbMatchNote++;
+		            }
+		            $nbSelection++;
+		            $nbMatch++;
+                   }
                 }
             }
             echo "<h6> Nombre de sélections en tant que remplaçant : ".$nbSelection."</h6>";
@@ -452,36 +460,44 @@ class Joueur
                 $nbSelection = 0;
                 $nbVictoire = 0;
                 if ($nbMatchTitulaire>0){
-                    for($k =0 ; $k<$nbMatchTitulaire; $k++){
-                        $match = $matchTitulaire->fetch();
-                        if(Match::estGagne($match['idMatch'])==1){
-                            $nbVictoire++;
-                        }
-                        if (!empty($match['notation'])) {
-                            $noteGlobale += $match['notation'];
-                            $nbMatchNote++;
-                        }
-                        $nbSelection++;
-                        $nbMatch++;
+                for($k =0 ; $k<$nbMatchTitulaire; $k++){
+                    $match = $matchTitulaire->fetch();
+                    $matchEnCours = Match::selectMatch($match['idMatch']);
+                    $matchEnCours = $matchEnCours->fetch();
+                    if($matchEnCours['statut']==2){
+		            if(Match::estGagne($match['idMatch'])==1){
+		                $nbVictoire++;
+		            }
+		            if (!empty($match['notation'])) {
+		                $noteGlobale += $match['notation'];
+		                $nbMatchNote++;
+		            }
+		            $nbSelection++;
+		            $nbMatch++;
                     }
                 }
-                echo "<h6> Nombre de sélections en tant que titulaire : ".$nbSelection."</h6>";
-                $nbSelection = 0;
-                $matchRemplacant = participerRemplacant::matchDunJoueur($joueurEnCours['numLicence']);
-                $nbMatchRemplacant = $matchRemplacant->rowCount();
-                if ($nbMatchRemplacant>0){
-                    for($k =0 ; $k<$nbMatchRemplacant; $k++){
-                        $match = $matchRemplacant->fetch();
-                        if(Match::estGagne($match['idMatch'])==1){
-                            $nbVictoire++;
-                        }
-                        if (!empty($match['notation'])) {
-                            $noteGlobale += $match['notation'];
-                            $nbMatchNote++;
-                        }
-                        $nbSelection++;
-                        $nbMatch++;
-                    }
+            }
+            echo "<h6> Nombre de sélections en tant que titulaire : ".$nbSelection."</h6>";
+            $nbSelection = 0;
+            $matchRemplacant = participerRemplacant::matchDunJoueur($joueurEnCours['numLicence']);
+            $nbMatchRemplacant = $matchRemplacant->rowCount();
+            if ($nbMatchRemplacant>0){
+                for($k =0 ; $k<$nbMatchRemplacant; $k++){
+                    $match = $matchRemplacant->fetch();
+                    $matchEnCours = Match::selectMatch($match['idMatch']);
+                    $matchEnCours = $matchEnCours->fetch();
+                    if($matchEnCours['statut']==2){
+		            if(Match::estGagne($match['idMatch'])==1){
+		                $nbVictoire++;
+		            }
+		            if (!empty($match['notation'])) {
+		                $noteGlobale += $match['notation'];
+		                $nbMatchNote++;
+		            }
+		            $nbSelection++;
+		            $nbMatch++;
+                   }
+                }
                 }
                 echo "<h6> Nombre de sélections en tant que remplaçant : ".$nbSelection."</h6>";
             if($noteGlobale>0 && $nbMatchNote !=0){

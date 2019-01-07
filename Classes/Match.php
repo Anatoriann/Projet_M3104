@@ -13,11 +13,13 @@ class Match
 
     public static function addMatch($adversaire, $dateM, $heureM, $lieuDeRencontre){
         $linkpdo = connectPDO();
+        $dateExplode = explode('/',$dateM);
+        $dateVerif = $dateExplode[2].'-'.$dateExplode[1].'-'.$dateExplode[0];
 
         // Vérification de l'existance du match
         $reqRecherche = $linkpdo->prepare("select * from matchs where dateM = :dateM and heureM = :heureM and nomAdversaire = :nomAdversaire and lieuDeRencontre = :lieu" );
         $reqRecherche->execute(array(
-            'dateM'=> date('Y-m-d', strtotime($dateM)),
+            'dateM'=> $dateVerif,
             'heureM' => date('H:i',strtotime($heureM)),
             'nomAdversaire' => $adversaire,
             'lieu' => $lieuDeRencontre));
@@ -30,14 +32,14 @@ class Match
         $reqInser = $linkpdo->prepare("INSERT INTO `matchs`(`dateM`, `heureM`, `nomAdversaire`, `lieuDeRencontre`, `statut`) 
                                                 VALUES (:dateM, :heureM, :nomAdversaire, :lieu, 0)");
         $reqInser->execute(array(
-                            'dateM'=> date('Y-m-d', strtotime($dateM)),
+                            'dateM'=> $dateVerif,
                             'heureM' => date('H:i',strtotime($heureM)),
                             'nomAdversaire' => $adversaire,
                             'lieu' => $lieuDeRencontre));
 
         // Vérification match bien inséré
         $reqRecherche->execute(array(
-            'dateM'=> date('Y-m-d', strtotime($dateM)),
+            'dateM'=> $dateVerif,
             'heureM' => date('H:i',strtotime($heureM)),
             'nomAdversaire' => $adversaire,
             'lieu' => $lieuDeRencontre));
