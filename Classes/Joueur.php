@@ -17,6 +17,8 @@ class Joueur
 
         $linkpdo = connectPDO();
         $res = Joueur::nbJoueurNum($licence);
+        $dateExplode = explode('/',$dateNaissance);
+        $dateVerif = $dateExplode[2].'-'.$dateExplode[1].'-'.$dateExplode[0];
 
         if ($res > 0) {
             return 1; // Erreur 1 : Le joueur est déjà présent
@@ -26,7 +28,7 @@ class Joueur
                 'nom' => $nom,
                 'prenom' => $prenom,
                 'photo' => $photo,
-                'dateNaissance' => date('Y-m-d', strtotime($dateNaissance)),
+                'dateNaissance' => $dateVerif,
                 'taille' => $taille,
                 'poids' => $poids,
                 'postePrefere' => $postePrefere,
