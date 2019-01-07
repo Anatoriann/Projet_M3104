@@ -1,9 +1,9 @@
 <?php
     $server = 'localhost';
 
-    $db = 'dcc2190a';
-    $login = 'dcc2190a';
-    $mdp = 't9hfkGnz';
+    $db = 'application';
+    $login = 'root';
+    $mdp = '$iutinfo';
 
     //$mdp = '';
 ?>

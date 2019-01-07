@@ -2,6 +2,7 @@
 require('session.php');
 require('Classes/Joueur.php');
 if (!empty($_POST['num_licence'])){
+	
     move_uploaded_file($_FILES['image']['tmp_name'],'photos_m3104/' . basename($_FILES['image']['name']));
     $res = Joueur::addJoueur($_POST['num_licence'],$_POST['nom'],$_POST['prenom'],$_POST['photo'],$_POST['dateN'], $_POST['taille'],$_POST['poids'],$_POST['postePrefere'],$_POST['statut'],$_POST['commentaire']);
     header("Location: traitement.php?error=$res");
@@ -27,7 +28,7 @@ if (!empty($_POST['num_licence'])){
 				<h1>Saisissez les informations relatives au nouveau joueur.</h1>
 
 
-				<form action="creation_joueur.php" method="post">
+				<form action="" method="post" enctype="multipart/form-data">
 
 					<div class="info-joueur">
 
@@ -71,8 +72,8 @@ if (!empty($_POST['num_licence'])){
 
 					<div class="photo_joueur">
 						<p> Insérez la photo du nouveau joueur. </p>
-						<input type="file" name="photo"
-	       					accept="image/png, image/jpeg"> <br />
+						<input type="file" name="image"
+	       					> <br />
 					</div>
 
 					<a href="joueurs.php" class="bouton_retour">&laquo; Retour</a>
